@@ -21,3 +21,11 @@ body > header {
   padding-top: 75px;
 }
 
+h6 a,
+h6 a:hover {
+  color: #444;
+}
+
+.post {
+  margin: 20px 0;
+}
