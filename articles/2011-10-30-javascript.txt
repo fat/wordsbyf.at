@@ -1,4 +1,4 @@
-title: "\"Javascript\""
+title: "Deep nerd shit... or a \"blog\""
 author: Fat
 date: 2011/10/30
 
