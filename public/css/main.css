@@ -1,11 +1,12 @@
 body {
-  background: url(img/background.jpg) #000;
+  background: url(/img/background.jpg);
 }
 
 h1 {
   color: #f600ff;
   font-family: "Mistral", helvetica;
   font-size: 48px;
+  margin: 0;
 }
 
 header, section, footer {
