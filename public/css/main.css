@@ -24,11 +24,11 @@ h1 {
   width: 700px;
 }
 
-body > header {
+.page > header {
   padding-top: 75px;
 }
 
-body > section {
+.page > section {
   overflow: hidden;
 }
 
