@@ -40,7 +40,11 @@ footer {
 
 a,
 a:hover {
-  color: #444;
+  color: #000;
+}
+
+p {
+  color: #555;
 }
 
 .post {
