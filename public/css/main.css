@@ -20,8 +20,8 @@ h1 {
 .page > section,
 .page > footer {
   background: #fff;
-  padding: 0 250px 0 50px;
-  width: 390px;
+  padding: 0 50px;
+  width: 525px;
 }
 
 .page > header {
@@ -31,8 +31,10 @@ h1 {
 
 .page > footer p {
   text-align: center;
+  margin-bottom: 20px;
 }
 
+.page > footer,
 .page > section {
   overflow: hidden;
 }
