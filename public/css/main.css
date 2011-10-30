@@ -81,6 +81,15 @@ p {
   position: relative;
 }
 
+.avatar img {
+  margin: 0 auto;
+  display: block;
+  float: left;
+  width: 189px;
+  border-radius: 10px;
+  position: relative;
+}
+
 .avatar img::after {
   position: absolute;
   display: block;
