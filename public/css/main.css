@@ -1,5 +1,5 @@
 body {
-  background: url(img/background.jpg);
+  background: url(img/background.jpg) #000;
 }
 
 h1 {
@@ -12,5 +12,9 @@ header, section, footer {
   background: #fff;
   margin-left: 50px;
   padding-left: 50px;
+}
+
+header {
+  padding-top: 75px;
 }
 
