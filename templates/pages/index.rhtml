@@ -1,6 +1,10 @@
 <section id="articles">
   <% for article in articles[0...3] %>
     <article class="post">
+      <header>
+        <h6><a href="<%= article.path %>"><%= article.title %></a></h6s>
+      </header>
+
       <section class="content">
         <%= article.summary %>
       </section>
