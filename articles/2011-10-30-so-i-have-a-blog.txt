@@ -1,5 +1,25 @@
-title: So i have a blog...
+title: "Javascript"
 author: Fat
 date: 2011/10/30
 
-I have a blog. It's a real thing.
+It's sunday. And this is my blog. It's new. And this is a post. It's the first one.
+
+I'm going to write words about javascript here. Sometimes i'll post pictures as well.
+
+I work at twitter on the platform team. This means I put twitter on websites. That means i'm responsible for that tweet button over there.
+
+I've done some <a href="//github.com/fat">opensource stuff.</a> <a href="//ender.no.de">Ender</a> and <a href="//twitter.github.com/bootstrap">Boostrap</a>.
+
+I'm not a computer scientist. I have a degree in literature. I don't read. I do perform computer science.
+
+I'm not obese, but I will respond to fat.
+
+I'm hungover. I'm eating pizza.
+
+I do comma first. I do declare my variables at the top of my functions.
+
+I don't do semicolons. I don't do Crockford.
+
+Hopefully that all makes sense. Hopefully you find this useful.
+
+<3 <a href="//twitter.com/fat">@fat</a>
