@@ -1,4 +1,6 @@
+html,
 body {
+  overflow: auto;
   background: url(/img/background.jpg);
 }
 
