@@ -21,6 +21,10 @@ body > header {
   padding-top: 75px;
 }
 
+body > section {
+  overflow: hidden;
+}
+
 h6 a,
 h6 a:hover {
   color: #444;
