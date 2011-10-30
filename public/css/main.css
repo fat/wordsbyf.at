@@ -30,6 +30,10 @@ h6 a:hover {
   color: #444;
 }
 
+h6 {
+  text-transform: none;
+}
+
 .post {
   margin: 20px 0;
 }
