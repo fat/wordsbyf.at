@@ -2,7 +2,7 @@
 require 'toto'
 
 # Rack config
-use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico'], :root => 'public'
+use Rack::Static, :urls => ['/css', '/js', '/img', '/favicon.ico'], :root => 'public'
 use Rack::CommonLogger
 
 if ENV['RACK_ENV'] == 'development'
@@ -16,7 +16,7 @@ toto = Toto::Server.new do
   #
   # Add your settings here
   # set [:setting], [value]
-  # 
+  #
   # set :author,    ENV['USER']                               # blog author
   # set :title,     Dir.pwd.split('/').last                   # site title
   # set :root,      "index"                                   # page to load on /
