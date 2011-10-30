@@ -20,7 +20,7 @@ h1 {
 .page > section,
 .page > footer {
   background: #fff;
-  padding: 0 50px;
+  padding: 0 250px 0 50px;
   width: 700px;
 }
 
