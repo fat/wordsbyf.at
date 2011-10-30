@@ -11,12 +11,17 @@ h1 {
   margin: 0;
 }
 
-body > header,
-body > section,
-body > footer {
+.page {
+  background: #000;
+}
+
+.page > header,
+.page > section,
+.page > footer {
   background: #fff;
   margin-left: 50px;
   padding-left: 50px;
+  width: 700px;
 }
 
 body > header {
