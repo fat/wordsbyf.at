@@ -79,12 +79,12 @@ p {
 
 .avatar {
   position: relative;
+  float:left;
 }
 
 .avatar img {
   margin: 0 auto;
   display: block;
-  float: left;
   width: 189px;
   border-radius: 10px;
   position: relative;
