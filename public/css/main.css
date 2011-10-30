@@ -13,14 +13,14 @@ h1 {
 
 .page {
   background: #000;
+  margin-left: 50px;
 }
 
 .page > header,
 .page > section,
 .page > footer {
   background: #fff;
-  margin-left: 50px;
-  padding-left: 50px;
+  padding: 0 50px;
   width: 700px;
 }
 
