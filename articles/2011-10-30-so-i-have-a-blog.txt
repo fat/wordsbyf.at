@@ -1,0 +1,5 @@
+title: So i have a blog...
+author: Fat
+date: 2011/10/30
+
+I have a blog. It's a real thing.
