@@ -1,4 +1,4 @@
-title: First blog post is first
+title: "Javascript"
 author: Fat
 date: 2011/10/30
 
