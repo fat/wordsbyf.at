@@ -29,11 +29,6 @@ h1 {
   padding-bottom: 25px;
 }
 
-.page > footer p {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .page > footer,
 .page > section {
   overflow: hidden;
