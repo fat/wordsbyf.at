@@ -9,7 +9,9 @@ h1 {
   margin: 0;
 }
 
-header, section, footer {
+body > header,
+body > section,
+body > footer {
   background: #fff;
   margin-left: 50px;
   padding-left: 50px;
