@@ -4,7 +4,7 @@ date: 2011/10/30
 
 <img src="/img/air-france.jpg" />
 
-It's sunday. And this is my blog. It's new. And this is a post. It's the first one.
+<strong>It's sunday. And this is my blog. It's new.</strong> And this is a post. It's the first one.
 
 I'm going to write words about javascript here. Sometimes i'll post pictures as well.
 
