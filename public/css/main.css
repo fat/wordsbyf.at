@@ -23,6 +23,10 @@ body > footer {
   width: 525px;
 }
 
+header h1 {
+  margin-bottom: 0;
+}
+
 body > header {
   padding-top: 50px;
 }
