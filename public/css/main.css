@@ -3,7 +3,7 @@ body {
   overflow: auto;
 }
 
-h1 {
+h1 a {
   color: #f600ff;
   font-family: "Mistral", helvetica;
   font-size: 48px;
