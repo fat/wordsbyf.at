@@ -42,7 +42,7 @@ So to directly answer the original question.... Technically there are semicolons
 
 The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an [excellent article](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) by [@izs](//twitter.com/izs) which goes into greater detail on the issue.
 
-That said, there *is* one place that I've added semicolons which are technically *optionally* present and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
+That said, there *is* one technically *optional* location that I've added semicolons in the bootstrap source and that is at the very end of each file. These were added for developers who were curling bootstrap plugins and concatenating them with rails generated JS.
 
 Although that seems innocent enough, there exists this highly unfortunate pattern:
 
@@ -50,20 +50,12 @@ Although that seems innocent enough, there exists this highly unfortunate patter
       // le code
     }())
 
-Because `()` executes code in js, when multiple functions are strung together like that, the javascript interpreter tries to execute them sequentially in a [sort of chain-like fashion](//jsfiddle.net/G8SHx/).
+Because `()` executes code in JS, when multiple functions are strung together like that, the javascript interpreter tries to execute them sequentially in a [sort of chain-like fashion](//jsfiddle.net/G8SHx/).
 
-Instead if you are writing self executing anonymous functions, it would be safer and a bit more courteous to write them like this:
+Instead, if you are writing self executing anonymous functions, it would be safer and a bit more courteous to write them like this:
 
     !function () {
       // le code
     }()
 
-    // or
-
-    ~function () {
-      // le code
-    }
-
-Ultimately, it results in the same thing and doesn't give you the syntax error when [smooshing things together](http://video.adultswim.com/lucy-the-daughter-of-the-devil/mill-or-himalountain.html). :)
-
-That said, i respect that code out there will exist in the former style, so we've elected to add a closing semicolon to play nicely.
+Doing so will also save you a byte (ooo horray! i know) and you no longer need to worry about that potential syntax error.
