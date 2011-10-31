@@ -49,4 +49,4 @@ Instead, if you are writing self executing anonymous functions, it would be safe
       // le code
     }()
 
-Doing so will also save you a byte (ooo horray! i know) and you no longer need to worry about that potential syntax error.
+Doing so will also save you a byte (ooo horray! i know) and you no longer need to worry about that potential syntax error. I like to call it ["smanging it"](http://www.youtube.com/watch?v=xt5ghXdq6Z0)...
