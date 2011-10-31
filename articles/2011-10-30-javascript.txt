@@ -4,7 +4,7 @@ date: 2011/10/30
 
 I've been getting [asked](https://twitter.com/#!/nmosafi/status/129946172860268544) and even [hassled](https://twitter.com/#!/pamelafox/status/128718640467021824) on the absence of semicolons in bootstraps js source quite a bit lately. This sorta surprised me.
 
-You have options when you write js. **LOTS** of options. It's pretty neat. Consider this simple bit of code:
+Turns out, uou have options when you write js. **LOTS** of options. It's pretty neat. Consider this simple bit of code:
 
 ```js
 if (event.preventDefault) {
