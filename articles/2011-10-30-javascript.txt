@@ -2,7 +2,7 @@ title: "I don't write \"JavaScript\""
 author: Fat
 date: 2011/10/30
 
-I've been getting [asked](https://twitter.com/#!/nmosafi/status/129946172860268544) and even [hassled](https://twitter.com/#!/pamelafox/status/128718640467021824) on the absence of semicolons in bootstraps js source quite a bit lately. This sorta surprised me. So much in fact i had to create an entire blog just to write about it...
+I've been getting [asked](https://twitter.com/#!/nmosafi/status/129946172860268544) and even [hassled](https://twitter.com/#!/pamelafox/status/128718640467021824) on the absence of semicolons in bootstraps source quite a bit lately. This sorta surprised me. So much in fact i had to create an entire blog just to write about it...
 
 Despite what you may have heard, you have options when you write JS. **LOTS** of options. It's pretty neat. Consider this simple bit of code:
 
@@ -23,7 +23,7 @@ Each is perfectly valid. Each behaves the same. It's just a matter of *preferenc
 
 ###What is "JavaScript"?
 
-With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach - this approach will likely have been written by [@stirman](//twitter.com/stirman) :D. Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach (this approach will likely have been written by [Jason Stirman](//twitter.com/stirman) :D ). Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
 
 For many frontend engineers, javascript is still "javascript the good parts". It's stilllll JSLint's "JavaScript".
 
