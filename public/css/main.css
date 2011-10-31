@@ -110,3 +110,7 @@ article p {
   font-size: 14px;
   line-height: 25px;
 }
+
+pre code {
+  background: transparent;
+}
