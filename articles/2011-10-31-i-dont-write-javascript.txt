@@ -41,7 +41,7 @@ Although that seems innocent enough, there exists this highly unfortunate patter
       // le code
     }())
 
-Because `()` executes code in JS, when multiple functions are strung together like that, the javascript interpreter tries to execute them sequentially in a [sort of chain-like fashion](//jsfiddle.net/G8SHx/).
+Because `()` executes code in JS, when multiple functions are strung together like that, the javascript interpreter tries to execute them sequentially in a sort of chain-like fashion and throws an error. [Check it out here](//jsfiddle.net/G8SHx/).
 
 Instead, if you are writing self executing anonymous functions, it would be safer and a bit more courteous to write them like this:
 
