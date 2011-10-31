@@ -10,6 +10,7 @@ h1 {
   margin: 0;
 }
 
+body > article,
 body > header,
 body > section,
 body > footer {
