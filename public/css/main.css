@@ -1,7 +1,6 @@
 html,
 body {
   overflow: auto;
-  background: url(/img/background.jpg);
 }
 
 h1 {
@@ -11,30 +10,24 @@ h1 {
   margin: 0;
 }
 
-.page {
-  background: #000;
-  margin-left: 50px;
-}
-
-.page > header,
-.page > section,
-.page > footer {
-  background: #fff;
+body > header,
+body > section,
+body > footer {
   padding: 0 50px;
   width: 525px;
 }
 
-.page > header {
+body > header {
   padding-top: 75px;
   padding-bottom: 25px;
 }
 
-.page > footer {
+body > footer {
   padding-bottom: 20px;
 }
 
-.page > footer,
-.page > section {
+body > footer,
+body > section {
   overflow: hidden;
 }
 
