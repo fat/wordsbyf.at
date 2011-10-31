@@ -1,6 +1,6 @@
 title: "I don't write \"JavaScript\""
 author: Fat
-date: 2011/10/30
+date: 2011/10/31
 
 I've been getting [asked](https://twitter.com/#!/nmosafi/status/129946172860268544) and even [hassled](https://twitter.com/#!/pamelafox/status/128718640467021824) on the absence of semicolons in bootstraps source quite a bit lately. This sorta surprised me. So much in fact i had to create an entire blog just to write about it...
 
@@ -20,20 +20,11 @@ If you were really having fun with it you could lose the `if` all together and d
 
 Each is perfectly valid. Each behaves the same. It's just a matter of *preference* and finding the style that makes most sense to you.
 
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach (this approach will likely have been written by [Jason Stirman](//twitter.com/stirman) <3 ). Unfortunately, encountering something like this can drive people towards an unnecessarily strict linter like JSLint.
 
-###What is "JavaScript"?
+For many frontend engineers, javascript is still only "javascript the good parts". It's still JSLint's "JavaScript".
 
-With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach (this approach will likely have been written by [Jason Stirman](//twitter.com/stirman) <3 ). Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
-
-For many frontend engineers, javascript is still "javascript the good parts". It's stilllll JSLint's "JavaScript".
-
-But it doesn't *need* to be. You have options. You can see other people. (If you haven't already I highly recommend you stop what you're doing and checkout [JSHint](//jshint.com)).
-
-*One of the single most liberating experiences in your javascript career will be when you subvert a Crockfordism.* That moment where no one is looking and you throw in something l33t like `~arr.indexOf('fat')` instead of `arr.indexOf('fat') > -1`.
-
-Write code you find beautiful. Get cheesy about it. You can really tell when someone cares about the aesthetics of their source!
-
-(also, maybe JSLint turns out to be your jam - that's cool too, but experiment!)
+But it doesn't *need* to be. Again, you have options. (If you haven't already I highly recommend you stop what you're doing and checkout [JSHint](//jshint.com)).
 
 
 ### Why are there no semicolons in bootstrap?
