@@ -1,25 +1,48 @@
-title: "Deep nerd shit... or a \"blog\""
+title: "\"javascript\""
 author: Fat
 date: 2011/10/30
 
-It's sunday. And this is my blog. It's new. And this is a post. It's the first one.
+I've been getting [asked](https://twitter.com/#!/nmosafi/status/129946172860268544) and even [hassled](https://twitter.com/#!/pamelafox/status/128718640467021824) on the absence of semicolons in bootstraps js source quite a bit lately. This sorta surprised me.
 
-I'm going to write words about javascript here. Sometimes i'll post pictures as well.
+You have options when you write js. **LOTS** of options. It's pretty neat. Consider this simple bit of code:
 
-I work at twitter on the platform team. This means I put twitter on websites. That means i'm responsible for that tweet button over there.
+```js
+if (event.preventDefault) {
+  event.preventDefault()
+}
+```
 
-I've done some <a href="//github.com/fat">opensource stuff.</a> <a href="//ender.no.de">Ender</a> and <a href="//twitter.github.com/bootstrap">Boostrap</a>.
+This could be rewritten with out the brackets like this:
 
-I'm not a computer scientist. I have a degree in literature. I don't read. I do perform computer science.
+```js
+if (event.preventDefault) event.preventDefault()
+```
 
-I'm not obese, but I will respond to fat.
+Or even without the `if` like this:
 
-I'm hungover. I'm eating pizza.
+```js
+event.preventDefault && event.preventDefault()
+```
+Each is perfectly valid. Each behaves the same. It's just a matter of style.
 
-I do comma first. I do declare my variables at the top of my functions.
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. From this, it's easy to encounter one particularly frightening approach and immediately recoil into a prescriptive discourse.
 
-I don't do semicolons. I don't do Crockford.
+When someone tells me I "should" put brackets there or I "should" put a semicolon here, it almost always stems from one bad experience or worse, a book by <a href="http://www.crockford.com/">some old guy</a>.
 
-Hopefully that all makes sense. Hopefully you find this useful.
+If you're really interested in the technical details as to why it's ok to exclude semicolons, i highly read this [excellent letter](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) written by [@izs](//twitter.com/izs).
 
-<3 <a href="//twitter.com/fat">@fat</a>
+### Why are there no semicolons in bootstrap?
+
+Technically there are semicolons in bootstrap. But they're only present where necessary.
+
+The only semicolon which is present in any boostrap js file, which could be excluded is the one found directly at the end of the file.
+
+This was added for developers who were concatenating bootstrap js with rails files written with this rather unfortunate, but highly pervasive pattern:
+
+```js
+(function () {
+
+}())
+```
+
+You've probably seen it before, or even used it. I ask you to stop.

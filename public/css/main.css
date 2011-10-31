@@ -29,6 +29,10 @@ h1 {
   padding-bottom: 25px;
 }
 
+.page > footer {
+  padding-bottom: 20px;
+}
+
 .page > footer,
 .page > section {
   overflow: hidden;
