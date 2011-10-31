@@ -23,7 +23,7 @@ Each is perfectly valid. Each behaves the same. It's just a matter of *preferenc
 
 ###What is "JavaScript"?
 
-With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach (this approach will likely have been written by [Jason Stirman](//twitter.com/stirman) :D ). Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach (this approach will likely have been written by [Jason Stirman](//twitter.com/stirman) <3 ). Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
 
 For many frontend engineers, javascript is still "javascript the good parts". It's stilllll JSLint's "JavaScript".
 
