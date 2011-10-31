@@ -2,7 +2,8 @@
   <% for article in articles[0...3] %>
     <article class="post">
       <header>
-        <h6><a href="<%= article.path %>"><%= article.title %></a></h6s>
+        <h6><a href="<%= article.path %>"><%= article.title %></a></h6>
+        <span class="date"><%= article.date %></span>
       </header>
 
       <section class="content">
