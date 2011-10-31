@@ -10,6 +10,11 @@ h1 a {
   margin: 0;
 }
 
+h1 a:hover {
+  text-decoration: none;
+  color: #f600ff;
+}
+
 body > article,
 body > header,
 body > section,
@@ -109,6 +114,7 @@ p {
 article p {
   font-size: 14px;
   line-height: 25px;
+  margin-bottom: 20px;
 }
 
 pre code {

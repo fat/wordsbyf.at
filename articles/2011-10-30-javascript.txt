@@ -18,29 +18,31 @@ If you were really having fun with it you could lose the `if` all together and d
 
     event.preventDefault && event.preventDefault()
 
-Each is perfectly valid. Each behaves the same. It's just a matter of **preference** and finding the style that makes most sense to you.
+Each is perfectly valid. Each behaves the same. It's just a matter of *preference* and finding the style that makes most sense to you.
 
 
 ###What is "JavaScript"?
 
-With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach - this approach will likely have been written by [@stirman](//twitter.com/stirman) :{o. Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach - this approach will likely have been written by [@stirman](//twitter.com/stirman) :D. Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
 
 For many frontend engineers, javascript is still "javascript the good parts". It's stilllll JSLint's "JavaScript".
 
 But it doesn't *need* to be. You have options. You can see other people. (If you haven't already I highly recommend you stop what you're doing and checkout [JSHint](//jshint.com)).
 
-*One of the single most liberating experiences in your javascript career will be when you subvert a Crockfordism.* That moment where no one is looking and you throw in something l33t like `~arr.indexOf('fat)` instead of `arr.indexOf('fat') > -1`.
+*One of the single most liberating experiences in your javascript career will be when you subvert a Crockfordism.* That moment where no one is looking and you throw in something l33t like `~arr.indexOf('fat')` instead of `arr.indexOf('fat') > -1`.
 
-Write code you find beautiful. Get cheesy about it. You can tell when someone cares about the aesthetics of their source and i find amazing.
+Write code you find beautiful. Get cheesy about it. You can really tell when someone cares about the aesthetics of their source!
 
 (also, maybe JSLint turns out to be your jam - that's cool too, but experiment!)
 
 
 ### Why are there no semicolons in bootstrap?
 
-So to directly answer the original question.... Technically there are semicolons in bootstrap, however the majority of lines don't end with them because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an excellent read by [@izs](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) on the issue.
+So to directly answer the original question.... Technically there are semicolons in bootstrap.
 
-That said, there is one place that I've added semicolons which are technically *optionally* present and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
+The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an excellent article by [@izs](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) which goes into greater detail on the issue.
+
+There *is* one place that I've added semicolons which are technically *optionally* present though and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
 
 Although that seems innocent enough, there exists this highly unfortunate pattern:
 
