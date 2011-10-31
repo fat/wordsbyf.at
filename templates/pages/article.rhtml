@@ -8,6 +8,11 @@
     <%= body %>
   </section>
 
+  <section>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="fat">Tweet</a>
+    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+  </section>
+
   <section class="comments">
     <% if @config[:disqus] %>
       <div id="disqus_thread"></div>
@@ -17,4 +22,3 @@
     <% end %>
   </section>
 </article>
-
