@@ -29,7 +29,7 @@ But it doesn't *need* to be. Again, you have options. (If you haven't already I 
 
 ### Ok, ok... Why are there no semicolons in bootstrap?
 
-So to directly answer the original question.... Technically there are semicolons in bootstrap.
+So to directly answer the original question.... Technically there *are* semicolons in bootstrap.
 
 The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an [excellent article](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) by [@izs](//twitter.com/izs) which goes into greater detail on the issue.
 
