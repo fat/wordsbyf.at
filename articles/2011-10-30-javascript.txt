@@ -10,34 +10,58 @@ Despite what you may have heard, you have options when you write js. **LOTS** of
       event.preventDefault()
     }
 
-Pretty straight forward. However, the brackets are optional, and this could be rewritten to look something like this:
+Pretty straight forward. However, the brackets are optional and the above code could be rewritten to look something like this:
 
     if (event.preventDefault) event.preventDefault()
 
-If you were really having fun with it you could lose the if all together and do something like this:
+If you were really having fun with it you could lose the `if` all together and do something like this:
 
     event.preventDefault && event.preventDefault()
 
-Each is perfectly valid. Each behaves the same. It's just a matter of style.
+Each is perfectly valid. Each behaves the same. It's just a matter of **preference** and finding the style that makes most sense to you.
 
-With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. From this, it's easy to encounter one particularly frightening approach and immediately recoil into a prescriptive discourse.
 
-When someone tells me I "should" put brackets there or I "should" put a semicolon here, it almost always stems from one bad experience or worse, a book by <a href="http://www.crockford.com/">some old guy</a>.
+###What is "JavaScript"?
 
-If you're really interested in the technical details as to why it's ok to exclude semicolons, i highly read this [excellent letter](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) written by [@izs](//twitter.com/izs).
+With a syntax as relaxed as javascript's, you see lots of different approaches to the same problem. Unfortunately, this unbound diversity often results in at least one particularly alarming approach - this approach will likely have been written by [@stirman](//twitter.com/stirman) :{o. Unfortunately, encountering something like this can drive people towards a strict, prescriptive linter like JSLint.
+
+For many frontend engineers, javascript is still "javascript the good parts". It's stilllll JSLint's "JavaScript".
+
+But it doesn't *need* to be. You have options. You can see other people. (If you haven't already I highly recommend you stop what you're doing and checkout [JSHint](//jshint.com)).
+
+*One of the single most liberating experiences in your javascript career will be when you subvert a Crockfordism.* That moment where no one is looking and you throw in something l33t like `~arr.indexOf('fat)` instead of `arr.indexOf('fat') > -1`.
+
+Write code you find beautiful. Get cheesy about it. You can tell when someone cares about the aesthetics of their source and i find amazing.
+
+(also, maybe JSLint turns out to be your jam - that's cool too, but experiment!)
+
 
 ### Why are there no semicolons in bootstrap?
 
-Technically there are semicolons in bootstrap. But they're only present where necessary.
+So to directly answer the original question.... Technically there are semicolons in bootstrap, however the majority of lines don't end with them because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an excellent read by [@izs](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) on the issue.
 
-The only semicolon which is present in any boostrap js file, which could be excluded is the one found directly at the end of the file.
+That said, there is one place that I've added semicolons which are technically *optionally* present and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
 
-This was added for developers who were concatenating bootstrap js with rails files written with this rather unfortunate, but highly pervasive pattern:
+Although that seems innocent enough, there exists this highly unfortunate pattern:
 
-```js
-(function () {
+    (function () {
+      // le code
+    }())
 
-}())
-```
+Because `()` executes code in js, when multiple functions are strung together like that, the javascript interpreter tries to execute them sequentially in a [sort of chain-like fashion](//jsfiddle.net/G8SHx/).
 
-You've probably seen it before, or even used it. I ask you to stop.
+Instead if you are writing self executing anonymous functions, it would be safer and a bit more courteous to write them like this:
+
+    !function () {
+      // le code
+    }()
+
+    // or
+
+    ~function () {
+      // le code
+    }
+
+Ultimately, it results in the same thing and doesn't give you the syntax error when [smooshing things together](http://video.adultswim.com/lucy-the-daughter-of-the-devil/mill-or-himalountain.html). :)
+
+That said, i respect that code out there will exist in the former style, so we've elected to add a closing semicolon to play nicely.
