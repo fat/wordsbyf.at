@@ -120,3 +120,7 @@ article p {
 pre code {
   background: transparent;
 }
+
+h6 {
+  text-transform: none;
+}
