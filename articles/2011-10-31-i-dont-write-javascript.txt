@@ -33,7 +33,7 @@ So to directly answer the original question.... Technically there *are* semicolo
 
 The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimalist aesthetic. For me, `\n` character is enough and the semicolon character is redundant. Here's an [excellent article](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) by [@izs](//twitter.com/izs) which goes into greater detail on the issue.
 
-That said, there is one *technically optional* location that I've added semicolons to in the bootstrap source: the very end of each file. These were added for developers who were curling bootstrap plugins and concatenating them with rails generated JS.
+That said, there *is* one technically optional location that I've added semicolons to in the bootstrap source: the very end of each file. These were added for developers who were curling bootstrap plugins and concatenating them with rails generated JS.
 
 Although that seems innocent enough, there exists this highly unfortunate pattern:
 
