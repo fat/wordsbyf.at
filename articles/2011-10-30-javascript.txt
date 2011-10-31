@@ -40,9 +40,9 @@ Write code you find beautiful. Get cheesy about it. You can really tell when som
 
 So to directly answer the original question.... Technically there are semicolons in bootstrap.
 
-The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an excellent article by [@izs](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) which goes into greater detail on the issue.
+The majority of lines however don't end with semicolons because they simply aren't necessary and I prefer the minimal aesthetic. For me, `\n` character is enough, and the semicolon character is redundant. Here's an [excellent article](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) by [@izs](//twitter.com/izs) which goes into greater detail on the issue.
 
-There *is* one place that I've added semicolons which are technically *optionally* present though and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
+That said, there *is* one place that I've added semicolons which are technically *optionally* present and that is at the end of all bootstrap js files. This was added for developers who were curling bootstrap js plugins and concatenating them with rails generated js.
 
 Although that seems innocent enough, there exists this highly unfortunate pattern:
 
