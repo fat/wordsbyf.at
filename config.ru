@@ -2,7 +2,7 @@
 require 'toto'
 
 # Rack config
-use Rack::Static, :urls => ['/css', '/js', '/img', '/favicon.ico'], :root => 'public'
+use Rack::Static, :urls => ['/css', '/js', '/img', '/fonts', '/favicon.ico'], :root => 'public'
 use Rack::CommonLogger
 
 if ENV['RACK_ENV'] == 'development'
@@ -28,7 +28,7 @@ toto = Toto::Server.new do
   # set :cache,      28800                                    # cache duration, in seconds
 
   set :date, lambda {|now| now.strftime("%B #{now.day.ordinal} %Y") }
-  set :summary,   :max => 350
+  set :summary,   :max => 250
 end
 
 run toto
