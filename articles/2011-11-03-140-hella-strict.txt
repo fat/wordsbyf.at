@@ -15,7 +15,7 @@ As of 1.4 we've decided to adopt ECMAScript 5's "strict" mode. As our project gr
 
 ### more data-attributes
 
-Mark and I feel strongly that you shouldn't have to spend time writing javascript just to add interaction to Bootstrap's components. Historically we've pursued this with the use of `data-attributes` and the [pub/sub](//en.wikipedia.org/wiki/Publish/subscribe) pattern. This pattern enables the addition of interactive behavior to elements through markup - subscribing to functionality rather then prescribing it:
+Mark and I feel strongly that you shouldn't have to spend time writing javascript just to add interaction to Bootstrap's components. Historically we've pursued this with the use of `data-attributes` and the [pub/sub](//en.wikipedia.org/wiki/Publish/subscribe) pattern. This pattern enables the addition of interactive behavior to elements through simple markup like:
 
     <div data-dropdown="dropdown">…</ div>
 
