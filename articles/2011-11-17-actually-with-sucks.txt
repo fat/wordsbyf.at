@@ -1,6 +1,6 @@
 ---
 title: actually *with* sucks
-date: 14/11/2011
+date: 17/11/2011
 
 Back in the beginning of August my good friend [@ded](//twitter.com/ded) wrote an article about [Sandboxing Javascript](http://dustindiaz.com/sandboxing-javascript). In this article he discusses a problem we had been having:
 
