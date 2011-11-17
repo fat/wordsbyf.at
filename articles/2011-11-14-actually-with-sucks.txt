@@ -1,0 +1,110 @@
+---
+title: actually *with* sucks
+date: 14/11/2011
+
+Back in the beginning of August my good friend [@ded](//twitter.com/ded) wrote an article about [Sandboxing Javascript](http://dustindiaz.com/sandboxing-javascript). In this article he discusses a problem we had been having:
+
+>[Trying] to bundle a set of core modules built by Ender along side [his] own library (that uses Ender), and not populate the global space.
+
+Essentially, he was trying to sandbox a JavaScript library for inclusion in 3rd party sites without running the risk of conflicting with any variables which may have already been defined - for example he didn't want his definition of `$` to override someone else's definition of `$` and vice versa.
+
+The rather elegant solution he came up with was to use a `with` tag to scope all variables within a block to a local object. At a high level that looked something like this:
+
+    !function () {
+
+      with (this) {
+        [library code…]
+      }
+
+    }.call({})
+
+If you're not exactly sure what that would do, check out [this block of code](//jsfiddle.net/aKv36/):
+
+    !function (myObject) {
+
+      with (myObject) { // creates a new scope which is set to myObject
+
+        !function (context) {
+
+            context.fat = 'nerd'
+
+        }(this) // now `this == myObject`
+
+
+        !function () {
+
+            if (fat == 'nerd') { // now `fat == myObject.fat`
+
+              alert('feels good man') // that means this will fire!
+
+            }
+
+        }()
+
+      }
+
+    }({})
+
+This is pretty awesome because it means we no longer really need to worry about anything - we can go crazy and everything which isn't explicitly setting variables on the `window` is contained within the block. Hooray!! right?
+
+#### NOPE
+
+Unfortunately there *is* a down side… performance (the bad kind). [Kangax](//twitter.com/#!/Kangax) does a pretty good job [explaining](//stackoverflow.com/questions/61552/are-there-legitimate-uses-for-javascripts-with-statement/1463937#1463937) what a JS engine is doing when you use a `with` statement:
+
+> Think about it - [an] implementation needs to evaluate an expression in parenthesis, convert it to [an] object, insert it into the front of the current scope chain, evaluate [the] statement inside the block, then restore [the] scope chain back to normal. That's a *lot* of work.
+
+And it needs to do that work for *everything* inside the `with` block - that's potentially multiple libraries!
+
+You might be thinking, "Oooo performance, pshaah! I don't worry about that premature optimization malarkey, yadda yadda…"
+
+In that case, I have a story for you… [gather round](http://www.youtube.com/watch?v=Ld4rPpYLYq0)…
+
+I was getting ready to release a bit of JS (roughly 13k gzipped) that was wrapped within a `with` block using the pattern above. I had created a sample page which ran a few tests against my isolated lib and things were looking pretty good in Chrome, Firefox, Safari, and even IE6+!
+
+Then the very wise [@sayrer](//twitter.com/sayrer) pulled me aside and pointed out that despite my testing, in reality this library was about to destroy the internet.
+
+As it turns out, he was right. Adding this lib to any application which already had a substantial amount of JS was causing it to peg the CPU and ultimately crash the application. What? how? why? boo. **Infinite sadness.**
+
+#### So that sucks, but…
+
+Luckily the way [Ender](//ender.no.de) was designed, libraries are consumed as [commonjs modules](///www.commonjs.org/specs/modules/1.0/). This means that there's not really a lot of sharing of code between libs and when there is, it's done via a `require` method.
+
+This is great news! If you can confirm that all your code is indeed playing by the commonjs rules, "sandboxing" is really as easy as scoping a few local instances of an api within an immediately invoked function expression - a simplified version of how i'm doing this now looks like this:
+
+    // prior definition of api var
+    var api = jQuery
+
+    // my library
+    !function () {
+
+      // we add a local var for our api method
+      var api
+
+      // the ender-js client lib augments it's api onto `this`
+      function (context) {
+          context[api] = api
+      }(this)
+
+      // we set the local api var equal to the augmented object var
+      api = this.api
+
+      // now all libs referencing `api()` will get
+      // our local var instead of jQuery
+      [library code…]
+      [library code…]
+      [library code…]
+      [library code…]
+      etc...
+
+    // Here we set the `this` of our function to a new object
+    // for the Ender client lib to augment (rather than window!)
+    }.call({})
+
+    // this outer api var is still equal to jquery, hooray!
+    api == jquery
+
+Super simple, right? Again, this works so well only because I happen to be working with code developed in a very modular way. But that's the future right?
+
+So no more `with` statements... k? What do you think?
+
+<3 fat

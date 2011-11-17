@@ -1,3 +1,5 @@
+/* Fat's blog styles */
+
 @font-face {
   font-family: "Mistral";
   src: url("/fonts/Mistral.ttf");
@@ -9,23 +11,23 @@ body {
 }
 
 h1 a {
-  color: #f600ff;
+  margin: 0;
   font-family: "Mistral", helvetica;
   font-size: 48px;
-  margin: 0;
+  color: #f600ff;
 }
 
 h1 a:hover {
-  text-decoration: none;
   color: #f600ff;
+  text-decoration: none;
 }
 
 body > article,
 body > header,
 body > section,
 body > footer {
-  padding: 0 50px;
   width: 525px;
+  padding: 0 50px;
 }
 
 header h1 {
@@ -71,20 +73,26 @@ p {
   margin: 30px 0;
 }
 
-.post img {
-  width: 250px;
+section .post img {
   float: left;
+  width: 250px;
   margin-right: 25px;
+  margin-bottom:0;
+}
+
+.post img {
+  width: 500px;
+  margin-bottom:-25px;
 }
 
 .post::after {
   display: block;
-  content: '';
   width: auto;
   height: 8px;
   margin: 0 auto;
-  background-color: #000;
   margin-top: 31px;
+  background-color: #000;
+  content: '';
 }
 
 .avatar {
@@ -94,21 +102,21 @@ p {
 }
 
 .avatar img {
-  margin: 0 auto;
+  position: relative;
   display: block;
   width: 189px;
+  margin: 0 auto;
   border-radius: 10px;
-  position: relative;
   box-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
 
 .avatar img::after {
   position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   width: 32px;
   height: 32px;
-  top: 0;
-  left: 0;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -121,11 +129,22 @@ p {
 }
 
 article p {
+  margin-bottom: 20px;
   font-size: 14px;
   line-height: 25px;
-  margin-bottom: 20px;
+}
+
+pre {
 }
 
 pre code {
   background: transparent;
 }
+
+pre code i {
+  font-style: normal;
+}
+
+
+i.comment { color: #999; }
+i.comment { color: #999; }

@@ -1,0 +1,49 @@
+---
+title: CSSRLYSUX-a-love-story
+date: 09/11/2011
+
+![cssrlysux in my terminal](/img/cssrlysux.png)
+
+Roughly two weeks ago I was getting a batch of CSS code reviewed on the [twitter.com](//twitter.com) repo and I was feeling pretty awesome about it. I had tested it in every major browser, written helpful comments, avoided unnecessary hacks, used descriptive class names, things were semantic, performant. I had crushed it. It was great. Best CSS ever written. I was a hero.
+
+When i checked my review at the end of the day however, [@mdo](//twitter.com/mdo) had highlighted every single definition block and written next to each one: "property order." Unshipped.
+
+;_;
+
+[@mdo](//twitter.com/mdo) and [@dhg](//twitter.com/dhg) (CSS bros at twitter, github legends, and all around bosses) had gotten together earlier this quarter and came up with a styleguide for frontend (markup/CSS) development at twitter. Among other things, this style guide included strict rules on ordering CSS properties - at a high level the ordering came down to: position -> display -> type -> background -> border -> misc… but at an implementation level they had actually specified the position of each property!
+
+If you're at all familiar with CSS you should know ordering within CSS blocks isn't really a thing. At most I've encountered maybe one or two OCD engineers who have alphabetised their rules, but nothing like what Mark and Dave had come up with; this was a well thought out, thorough, sort order for every individual CSS property (every. one.) - and it was an order they were completely committed to.
+
+I was pretty sure if I had to go back to their wiki and line by line reorder my styles every time i worked on the twitter.com codebase i would die. However, I did think it was pretty cool they were putting so much thought into CSS production, something I'm guilty of often neglecting.
+
+So I wrote a tool. duh.
+
+[CSSRLYSUX](/github.com/fat/cssrlysux) is new a project for *linting* and *compiling* your CSS. What this means is that it takes all the cool things that Mark and Dave had thoughtout on paper and gives you a programatic way of enforcing and even fixing them! The current validations include:
+
+- checking you're not styling classes prefixed with js (ex: `.js-drag`)
+- checking you're not styling id attributes
+- checking you're not using underscores in your selectors
+- checking you're not overqualifying your selectors (ex: `div#fat`)
+- checking you're not using universal `*` selectors
+- checking you're not adding units to zero values
+- checking you're ordering your properties how dave and mark want you to
+
+From the beginning, every validation is meant to be completely optional and though all options are currently on by default, you can easily switch them off right from your command line:
+
+    $ CSSRLYSUX ./bootstrap.css --underscoresAreFine
+
+Internally [CSSRLYSUX](/github.com/fat/cssrlysux) uses the [LESS](https://github.com/cloudhead/less.js) tokenizer, so it's super fast and robust (read: not just a bunch of regex hackery)!
+
+As i mentioned above, besides simply linting your CSS, you can also ask the tool to output the entire reformatted (and compiled) source, with cleaned up spacing and property ordering! All you need to do is add the `--compile` flag and you're good to go!
+
+    $ CSSRLYSUX ./bootstrap.css --compile > ./boostrap-fixed.css
+
+As an added bonus, you can also use CSSRLYSUX to compile your LESS source directly -- look for future releases of bootstrap to be using this instead of the lessc commandline tool!
+
+That's it for now! There's still more to go, writing tests, etc. but if you'd like to play with it, just run:
+
+    $ npm install CSSRLYSUX -g
+
+Let me know what you think!!
+
+<3 fat
