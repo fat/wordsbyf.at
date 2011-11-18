@@ -107,4 +107,34 @@ Super simple, right? Again, this works so well only because I happen to be worki
 
 So no more `with` statements... k? What do you think?
 
+#### <span class="label notice">Edit</span> This is what Angus thinks…
+
+Shortly after posting this article, [Angus Croll](//http://twitter.com/angustweets) scolded me on gchat for not having comments. Which i regretted, until this morning when I recieved this super insightful email on `with`!
+
+Checkout what he had to say:
+
+>ok sorry - crazy hectic day - here goes...
+>
+>So chrome developer tools uses `with` to evaluate every console expression you give it in the context of its commandLineAPI (the > thing that gives you all the sugar like $, $, inspect etc.):
+>
+>expression = with (window.console._commandLineAPI) {\n" + expression + "\n})
+>
+>This is a really neat way to ensure your console code is invoked in the global context but can also access the non-global chrome >utilities as though they were globals (but without polluting the global scope)
+>
+>You can check out the whole function - and its ancestors - by running...
+>
+>(function() {console.log(arguments.callee.caller)})()
+>
+>...in the console.
+>
+>I modified their code to make every snippet run in strict mode in the console - except not really because with is not allowed in >strict mode. Interesting to see what Chrome will do when `with` is banished from Es.next
+>
+>Also David Herman made a whacky proposal today in the ES discussion group for using `with` as a crazy obvious way to make a >prototype chain:
+>
+>https://mail.mozilla.org/pipermail/es-discuss/2011-November/018514.html
+>
+>obj with { foo: 12 } with { bar: 13 } with { baz: 17 }
+>
+>Ingenious really - but what do I know - not a computer scientist either
+
 <3 fat
