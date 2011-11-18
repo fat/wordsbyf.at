@@ -107,6 +107,7 @@ Super simple, right? Again, this works so well only because I happen to be worki
 
 So no more `with` statements... k? What do you think?
 
+<div id="angus"></div>
 #### <span class="label notice">Edit</span> This is what Angus thinks…
 
 Shortly after posting this article, [Angus Croll](//http://twitter.com/angustweets) scolded me on gchat for not having comments. Which i regretted, until this morning when I recieved this super insightful email on `with`!
