@@ -20,7 +20,7 @@ What this means is that when you make a call to `$` you're really just creating 
 
 #### Selector Expressions
 
-When you pass a specifically a `string` into the `$` method it first filters to make sure that the input is not an HTML string. Is does this in two ways.
+When you pass specifically a `string` into the `$` method it first filters to make sure that the input is not an HTML string. Is does this in two ways.
 
 First, it does a simple check to see if the string begins with a `<` and ends with a `>` (this is the more performant of the two tests and can be optimized for by making sure you trim() all templates and html strings *before* passing them into the dollar). This test looks like this:
 
