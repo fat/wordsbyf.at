@@ -40,7 +40,7 @@ With a little digging you'll see that `find` is defined simply as: `jQuery.find 
 
 #### Sizzle
 
-You may or may not have heard of [Sizzle](//sizzlejs.com/), but in the projects README they've described it as:
+You may or may not have heard of [Sizzle](//sizzlejs.com/), but in the project's README they've described it as:
 
 > A pure-JavaScript CSS selector engine designed to be easily dropped in to a host library.
 
@@ -161,7 +161,7 @@ The `find` method begins by testing a given query against each of it's three sel
 
     /(^(?:.|\r|\n)*?)#((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?![^\[]*\])(?![^\(]*\))/
 
-It a match is found, it passes the result to an appropriate "find type." Find types are responsible for actually extracting nodes from the DOM. If no find type is specified, as in `$('.fat')`, the `find` method will actually return the results from `context.getElementsByTagName( "*" )`, a potentially huge and very costly operation.
+If a match is found, it passes the result to an appropriate "find type." Find types are responsible for actually extracting nodes from the DOM. If no find type is specified, as in `$('.fat')`, the `find` method will actually return the results from `context.getElementsByTagName( "*" )`, a potentially huge and very costly operation.
 
 This means that `$('#fat :checked')` is really `$('#fat *:checked')` (same goes for classnames)! As you might imagine, it's generally a good idea to avoid the `"*"` selector whenever possible - do this by over-qualifying your selectors with tags: `$('#fat input:checked'')`!
 
