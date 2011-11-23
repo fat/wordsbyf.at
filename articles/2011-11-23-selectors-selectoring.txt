@@ -6,7 +6,7 @@ I'm often surprised at how many front end engineers aren't actually sure what th
 
 They use it every day. They know it returns whichever css rule they have specified. But they don't really know *how* it does it.
 
-This article is my attempt at explaining what is going on at a high-level. The code samples below are largely simplified from the actual jQuery/Sizzle source. If you find in inaccuracies or a point you would like further clarified, please let me know on [twitter](https://twitter.com/intent/tweet?screen_name=fat)! Thanks!
+This article is my attempt at explaining what is going on at a high-level. The code samples below are largely simplified from the actual jQuery/Sizzle source. If you find any inaccuracies or a point you would like further clarified, please let me know on [twitter](https://twitter.com/intent/tweet?screen_name=fat)! Thanks!
 
 ---
 
