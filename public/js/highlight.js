@@ -6,7 +6,7 @@ var nodes = document.querySelectorAll('pre code')
   , special  = ( 'eval window document undefined NaN Infinity parseInt parseFloat '
                + 'encodeURI decodeURI encodeURIComponent decodeURIComponent').split(' ')
   , syntax = [
-      ['regexp' , /(\/.+\/[mgi]*)(?!\s*\w)/g],
+     // ['regexp' , /(\/.+\/[mgi]*)(?!\s*\w)/g],
       ['string' , /("(?:(?!\")[^\\\n]|\\.)*"|\'(?:(?!\')[^\\\n]|\\.)*')/g],
       ['comment', /(\/\*(?:[^*\n]|\*+[^\/\*])*\*+\/)/g],
       ['comment', /(\/\/[^\n]*)/g],

@@ -85,6 +85,7 @@ section .post img {
   margin-bottom:-25px;
 }
 
+#archives::after,
 .post::after {
   display: block;
   width: auto;
@@ -134,17 +135,41 @@ article p {
   line-height: 25px;
 }
 
-pre {
+
+code {
+  white-space: nowrap;
 }
 
 pre code {
+  padding: 0;
   background: transparent;
+  white-space: normal;
 }
 
 pre code i {
   font-style: normal;
 }
 
+i.comment { color: #999; }
+i.comment { color: #999; }
 
-i.comment { color: #999; }
-i.comment { color: #999; }
+#archives h4 {
+  color: #000;
+}
+
+#archives {
+  margin-bottom: 25px;
+}
+
+#archives ul {
+  margin-left: 0;
+}
+
+#archives li {
+  list-style:none;
+}
+
+#archives .arr{
+  display: inline-block;
+  margin: 0 5px 0 10px;
+}

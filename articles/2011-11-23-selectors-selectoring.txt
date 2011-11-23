@@ -1,0 +1,335 @@
+---
+title: selectors selectoring
+date: 23/11/2011
+
+I'm often surprised at how many front end engineers aren't actually sure what this does: `$('a.fat')`
+
+They use it every day. They know it returns whichever css rule they have specified. But they don't really know *how* it does it.
+
+This article is my attempt at explaining what is going on at a high-level. The code samples below are largely simplified from the actual jQuery/Sizzle source. If you find in inaccuracies or a point you would like further clarified, please let me know on [twitter](https://twitter.com/intent/tweet?screen_name=fat)! Thanks!
+
+---
+
+#### the $
+
+If you do a little digging in jQuery's core, you'll quickly see the following comment:
+
+> The jQuery object is actually just the init constructor 'enhanced'
+
+What this means is that when you make a call to `$` you're really just creating a new instance of the `jQuery.fn.init` constructor. This constructor does unique things depending on it's input: checking for DOMElements, a 'body' selector, HTML strings, general selector expressions, functions, and just about everything else you can imagine.
+
+#### Selector Expressions
+
+When you pass a specifically a `string` into the `$` method it first filters to make sure that the input is not an HTML string. Is does this in two ways.
+
+First, it does a simple check to see if the string begins with a `<` and ends with a `>` (this is the more performant of the two tests and can be optimized for by making sure you trim() all templates and html strings *before* passing them into the dollar). This test looks like this:
+
+    if ( selector.charAt(0) === "<"
+         && selector.charAt( selector.length - 1 ) === ">"
+         && selector.length >= 3 ) { ... }
+
+ If the above check fails it uses the following more costly regular expression to double check for a HTML string:
+
+    /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/.exec( selector )
+
+Our `'a.fat'` expression correctly fails to satisfy both HTML tests above, which will cause the `init` constructor to pass our selector along to jquery's `find` method.
+
+With a little digging you'll see that `find` is defined simply as: `jQuery.find = Sizzle`
+
+---
+
+#### Sizzle
+
+You may or may not have heard of [Sizzle](//sizzlejs.com/), but in the projects README they've described it as:
+
+> A pure-JavaScript CSS selector engine designed to be easily dropped in to a host library.
+
+Like a few other engines ([qwery](//github.com/ded/qwery), [nwmatcher](//github.com/dperini/nwmatcher), [slick](//github.com/mootools/slick)), Sizzle is completely standalone, highly extensible, and relatively small (Sizzle is about 4k).
+
+At it's core Sizzle exposes a rather straight forward api, but depending on your browser's capabilities, the `window.Sizzle` method will get defined in one of two ways.
+
+---
+
+#### Modern
+
+Browsers which define `document.querySelectorAll` will get the "modern" Sizzle method (except for Safari when in quirks mode, which though it defines a `querySelectorAll`, can't handle uppercase or unicode characters).
+
+The modern definition accepts four arguments:
+
+- `query` - the only required argument, it's the selector
+- `context` - this is for Element-rooted queries, it's an optional point from which to search the dom. If not supplied it will default to document
+- `extra` - an array which if supplied will have the query results pushed into it (this argument is undocumented)
+- `seed` - used as a set against which to filter against the specified selector. If used, the modern Sizzle definition will revert to the legacy definition. (also undocumented)
+
+The first thing that the modern definition does is to see if the specified context is in XML, as things like ID selectors don't work in non-HTML documents. If this is the case, Sizzle will revert to it's legacy matcher defintion.
+
+Assuming that the document we're running our selector (`a.fat`) against is indeed HTML - a series of tests are performed against our expression in an effort to fork off to more performant selection methods than `querySelectorAll`. The RegExp used to perform this check is:
+
+    /^(\w+$)|^\.([\w\-]+$)|^#([\w\-]+$)/
+
+The above tests for simple tags, classes, or id's (expressions like `'a.fat'` or `'#foo:checked'` won't match because they include additional expression data beyond a root). If a match does occur however, Sizzle will use one of the following methods to return results:
+
+- **HTML tag** - context.getElementsByTagName( query )
+- **className** - context.getElementsByClassName( query )
+- **ID** - context.getElementById( query )
+
+<div class="well">
+<span class="label notice">Note</span> Before returning an element from an ID, sizzle will also check to make sure the matched element has a <code>parentNode</code>. This ensures that the matched element is actually in the DOM (which apparently is a problem in Blackberry 4.6).
+</div>
+
+If the above optimization cases are not satisfied, which again would be the case for our query `$('a.fat')`, Sizzle will then try `querySelectorAll`:
+
+    try {
+        return context.querySelectorAll(query)
+    } catch(qsaError) {}
+
+The `querySelectorAll` method parses strings from right to left, or "bottom-up", that means you should get more specific on the right and lighter on the left (ex: use `'.tweet img.user'` rather than `'div.tweet .user'`)
+
+Also notice that the `querySelectorAll` above is wrapped in a try catch because in some browsers certain selector expressions will throw an error. If you're interested in what those selectors look like - try trolling [@jdalton](//twitter.com/jdalton). He <3's that junk.
+
+<div class="well">
+<span class="label notice">Note</span> It's interesting to point out that based on the above Sizzle optimizations - it would actually be more performant to use <code>$('.fat')</code> for the modern matcher definition. Likewise, don't over-qualify your id selectors! That said - this isn't the case for legacy matching, which i will go into more detail about below.
+</div>
+
+Finally, if an error *does* occur in `querySelectorAll`, the modern matcher will fall back to it's "legacy" definition before giving up all together and returning no results.
+
+---
+
+#### Element-rooted queries
+
+Before getting into the legacy matcher, I wanted to mention "Element-rooted queries".
+
+You've probably come across something like this before: `$('.fat', $myElement)` or maybe `$myElement.find('.fat')`. These provide a point from within the dom from which to begin a search (rather than searching the entire DOM - which is the case in regular queries like `$('a.fat')`).
+
+Unfortunately, `querySelectorAll` behaves strangely in this context and Sizzle has had to resort to a hack provided by [@andrewdupont](//twitter.com/andrewdupont) to make things work.
+
+In a nutshell the hack comes down to this comment in the source:
+
+> We can work around this by specifying an extra ID on the root
+> and working up from there…
+
+What this means is that every time you're using an element-rooted query in modern browsers, Sizzle actually set's an ID value of "\_\_sizzle\_\_" on your element's root (if one isn't already present), then moves the rooting element to the original root's parentNode, and finally does `querySelectorAll` on the new root like this:
+
+    try {
+        return context.querySelectorAll( "[id='" + nid + "'] " + query )
+    } catch(pseudoError) {}
+
+As you can see - this is sorta a bummer as all of our simple selector optimizations are lost :/ That said, it still largely performs better to search from a root in modern browsers - [try it!](//jsperf.com/element-rooted-queries)
+
+---
+
+#### Legacy
+
+The legacy matcher is the main matching method for all queries. If there is any problems with the modern one, or if you're searching on xml or even trying to filter against an array of nodes (as in `Sizzle.matches`), the Legacy matcher will always be used.
+
+As you might expect the legacy definition accepts the same arguments as it's modern counterpart. That said, at a high level the legacy code works quite differently:
+
+- arguments are passed in to the legacy defintion
+- the selector is chunked
+- it grabs relevant elements from the dom using limited methods
+- filters the matched elements by the supplied expression
+- converts the results to a properly sorted array
+
+---
+
+#### Chunking
+
+Sizzle begins the query process by "chunking" the provided selector with the following gnarly RegExp:
+
+    var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g
+
+This `chunker` parses the selector into different consumable parts - these entities include: ID, class, name, attr, tag, child, pos, pseudo, combinators, etc.
+
+The less chunks generally the better (as less code has to be iterated over). That means that using something like `$('.tweet img.user')` is generally more performant than `$('.tweet div.header img.user')`
+
+<div class="well">
+<span class="label notice">Note</span>
+Immediately following the chunking, Sizzle does a quick upfront test to see if your chunked query includes a position pseudo (ex: <code>:first</code> or <code>:last</code>). If it does, Sizzle passes the selector off to a method called <code>posProcess</code>.
+<br><br>
+The `posProcess` method essentially removes all position pseudos (including <code>:not()</code>) from the selector, then runs the cleaned query against the DOM. After the query has finished, it then takes the matched results and filters them against the previously removed position pseudos.
+<br><br>
+This means that doing <code>$( $('a.fat')[0] )</code> is actually considerably faster than <code>$('a.fat:first')</code> - <a href="//jsperf.com/first-vs-0">try it for yourself</a>.
+</div>
+
+---
+
+#### Find
+
+In many ways `find` is the core of the the legacy matcher, as it single handedly is responsible for actually extracting the element nodes from the dom.
+
+The `find` method begins by testing a given query against each of it's three selector types, in this order: `[ "ID", "NAME", "TAG" ]`. The test it performs is a regular expression which ignores everything to the left of a match (as in `$('div#fat')`) - the RegExp for ID is below:
+
+    /(^(?:.|\r|\n)*?)#((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?![^\[]*\])(?![^\(]*\))/
+
+It a match is found, it passes the result to an appropriate "find type." Find types are responsible for actually extracting nodes from the DOM. If no find type is specified, as in `$('.fat')`, the `find` method will actually return the results from `context.getElementsByTagName( "*" )`, a potentially huge and very costly operation.
+
+This means that `$('#fat :checked')` is really `$('#fat *:checked')` (same goes for classnames)! As you might imagine, it's generally a good idea to avoid the `"*"` selector whenever possible - do this by over-qualifying your selectors with tags: `$('#fat input:checked'')`!
+
+
+
+<div class="well">
+<span class="label notice">Note</span> As we saw above with the modern matcher, using a contextual element to narrow the range of feasible matches leads to greatly improved performance. This is doubly true with the legacy matcher.
+<br><br>
+In fact, here the legacy method actually tries to help you out by also detecting queries like <code>$('#fat img')</code> and automatically setting <code>$('#fat')</code> as a root node from which to search for <code>img</code>. This is done by executing a simple check to see if the root selector (the first parsed chunk) *is* an ID and that the last chunk *is not* an ID.
+</div>
+
+Here's a more detailed look at the various find types and how they work:
+
+<table class="zebra-striped">
+    <thead>
+     <tr>
+       <th style="width: 100px;">find type</th>
+       <th>description</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+       <td>ID</td>
+       <td>
+        The <code>ID</code> type is actually relatively straight forward. It checks to make sure that <code>getElementByID</code> is available and if it is, executes it on the current context node and returns the results.
+        <br><br>
+        <div class="well">
+        <span class="label notice">Note</span> When initializing itself, Sizzle does an additional check to see if the browser returns elements by name when querying by <code>getElementById</code>. If it does, it overwrites the ID find type with a slightly slower method which has an additional conditional checks to make sure the elements returned indeed have the correct id attribute and are not just matches for the name attribute.
+        </div>
+       </td>
+     </tr>
+     <tr>
+       <td>Name</td>
+       <td>
+The <code>name</code> type is also really simple. If <code>getElementsByName</code> is defined, it executes it on the current root node. It also does an additional sanity check on the results, iterating over everything returned and calling <code>getAttribute("name")</code> on each individual result in an effort to prevent false positives.</td>
+     </tr>
+     <tr>
+       <td>TAG</td>
+       <td>
+The last find method is uses <code>getElementsByTagName</code> to return tag matches.
+<br><br>
+        <div class="well">
+<span class="label notice">Note</span> During setup, Sizzle does an additional check to make sure the browser returns only elements when doing <code>getElementsByTagName("*")</code>. In some browsers this method will actually return comments. In the case where it is returning comments, the method is overwritten with an additional filter to prevent comments from being returned. This too adds a little additional overhead for tag requests.</td>
+</div>
+     </tr>
+    </tbody>
+</table>
+
+---
+
+#### Filter
+
+After `find` finishes selecting all relevant elements from the dom, the `filter` method loops through the chunked expression and tests for the occurrence of each filter's type: `PSEUDO`, `CHILD`, `ID`, `TAG`, `CLASS`, `ATTR`, and `POS`.
+
+If a "filter type" is present in a given selector expression, the `filter` method passes the node collection provided by `find` through to the matched type's `preFilter` method:
+
+<table class="zebra-striped">
+    <thead>
+     <tr>
+       <th style="width: 100px;">preFilter type</th>
+       <th>description</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+       <td>Class</td>
+       <td>
+        Strips all double forward slashes from the tested chunk, then iterates over every element looking for a match in each elements <code>className</code> property.
+       </td>
+     </tr>
+     <tr>
+       <td>ID</td>
+       <td>Strips all double forward slashes from the chunk being tested.</td>
+     </tr>
+     <tr>
+       <td>TAG</td>
+       <td>Strips all double forward slashes from the chunk being tested and lowercases the string.</td>
+     </tr>
+     <tr>
+       <td>CHILD</td>
+       <td>Checks for "nth" child - if present parses for equations like 'even', 'odd', '5', '2n', '3n+2', '4n-1', '-n+6' and modifies the match chunks accordingly. Otherwise just returns match array.</td>
+     </tr>
+     <tr>
+       <td>ATTR</td>
+       <td>Tests to see if the attribute being queried is 'class' or 'for' and replaces them with 'className' or 'htmlFor' respectively. Also handles if an un-quoted value was used.</td>
+     </tr>
+     <tr>
+       <td>PSEUDO</td>
+       <td>Checks to see if pseudo is a complex <code>not()</code> in which case it re-queries the dom and uses the result to diff against the current node list. If it isn't the <code>:not()</code> pseudo, tests to see if prior chunks are POS or CHILDs and returns true. If neither of the above are true, it just returns the unmodified match object.</td>
+     </tr>
+    <tr>
+       <td>POS</td>
+       <td>Pushes <code>true</code> onto the front of the match array and returns it.</td>
+     </tr>
+    </tbody>
+</table>
+
+After going through the preFilters, the `filter` method continues forward and applies the actual filter method for a given filter type and returns the result:
+
+<table class="zebra-striped">
+    <thead>
+     <tr>
+       <th style="width: 100px;">filter type</th>
+       <th>description</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+       <td>Class</td>
+       <td>
+            Checks to see if <code>(elem.className || elem.getAttribute("class"))</code> match the specified selector.
+       </td>
+     </tr>
+     <tr>
+       <td>ID</td>
+       <td>Checks to see if <code>elem.getAttribute("id") === match</code>.</td>
+     </tr>
+     <tr>
+       <td>TAG</td>
+       <td>Checks if <code>elem.nodeName</code> is a match.</td>
+     </tr>
+     <tr>
+       <td>CHILD</td>
+       <td>Switch statement which does a number of loops to check for "only", "first", "last", and "nth".</td>
+     </tr>
+     <tr>
+       <td>ATTR</td>
+       <td>Get's attribute and does appropriate check against attribute value based on comparison type (ie: <code>"!="</code>)</td>
+     </tr>
+     <tr>
+       <td>PSEUDO</td>
+       <td>Checks to see if one of the following filters applies: enabled, disabled, checked, selected, parent, empty, has, header, text, radio, checkbox, file, pasword, submit, image, reset, button, input, focus. If it exists then it offloads work to the relevant method, otherwise handles "contains" and "not". If pseudo name doesn't match anything of the defined pseudos it throws an exception.</td>
+     </tr>
+    <tr>
+       <td>POS</td>
+       <td>Checks if one of the following setFilters applies: first, last, event, odd, lt, gt, nth, eq. returns result of filtering on one of those.</td>
+     </tr>
+    </tbody>
+</table>
+
+---
+
+#### makeArray
+
+After `find` and `filter` have finished retrieving elements, Sizzle pushes everything to an array along with the optional `results` argument and does some simple pruning to clean up the result before returning it back to you.
+
+<div class="well">
+<span class="label notice">Note</span> Sizzle performs a small check to determine if the browser is capable of converting a nodelist to an array using built in methods and if the returned array holds DOM nodes. If not, it creates a new method called <code>makeArray</code> to handle that special for us.
+</div>
+
+---
+
+#### in summary
+
+So what happens when you write `$('a.fat')`? Hopefully it's pretty clear by now -- but this is what is happening:
+
+- The expression is passed through to the sizzle engine.
+- In modern browsers, it is then run against `querySelectorAll`, transformed into an array, then returned.
+- In older browsers the selector is chunked, all `a` tags in the dom are grabbed, then iterated over looking for a `className` which matches `'fat'`, then the final results are returned as an array.
+
+Again, this means in the legacy definition, every time you query for anything without an `ID`, `Name`, or `Tag`, you will always be fetching every element in the dom (`getElementsByTagName("*")`)! For example, `$('.fat')` will first fetch your entire dom, then loop over each element and filter for a matching `className`.
+
+Because of this, if you are optimizing for legacy browsers it is highly desirable to over-qualify your selectors where possible: `$('a.fat')`. Unfortunately, this same over-qualification is less performant in the modern definition because the over-qualified expression is unable to use the `getElementsByClassName` optimization and must resort to `querySelectorAll`.
+
+<a href="//jsperf.com/overqualify-class">Try it yourself in IE 6 and Chrome!</a>
+
+---
+
+#### that's it
+
+If you disagree with anything in this article, need more clarification on something, or you just want to say hey - hit me up on [twitter](https://twitter.com/intent/tweet?screen_name=fat)!
