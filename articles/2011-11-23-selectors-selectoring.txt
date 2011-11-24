@@ -165,8 +165,6 @@ If a match is found, it passes the result to an appropriate "find type." Find ty
 
 This means that `$('#fat :checked')` is really `$('#fat *:checked')` (same goes for classnames)! As you might imagine, it's generally a good idea to avoid the `"*"` selector whenever possible - do this by over-qualifying your selectors with tags: `$('#fat input:checked'')`!
 
-
-
 <div class="well">
 <span class="label notice">Note</span> As we saw above with the modern matcher, using a contextual element to narrow the range of feasible matches leads to greatly improved performance. This is doubly true with the legacy matcher.
 <br><br>
