@@ -107,7 +107,7 @@ To do that you set a custom `get` and `set` method on an object like this:
 
     Object.defineProperty(twttr, 'profile', {
         get: function () {
-         debugger
+          debugger
         }
       , set: function (val) {
           debugger
