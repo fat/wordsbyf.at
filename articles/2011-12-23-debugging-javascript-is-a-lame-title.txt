@@ -33,6 +33,10 @@ If you're not familiar with the concept, a breakpoint pauses the execution of a 
 I use breakpoints when log statements begin to feel tedious or in larger projects where I'm encountering lots of abstraction. Being able to pause the execution and step through methods can be a seriously invaluable way of familiarizing yourself with any code base and if you haven't tried it - stop what you're doing and try it now. *seriously*.
 
 
+#### conditional breakpoints
+
+Conditional breakpoints are just like regular breakpoints, but only pause your script when an expression is true. These are great (particularly in loops) where you're only conditionally interested in something. Definitely something worth checking out if you haven't happened across them before!
+
 #### pausing on exceptions
 
 "Pausing on exceptions" has all the same advantages as regular breakpoints, but with the added bonus that they only occur at the point of an exception (and just before the exception is actually thrown).
@@ -116,6 +120,16 @@ To do that you set a custom `get` and `set` method on an object like this:
 
 Now anytime the `twttr.profile` variable is referenced or written to you'll have a hook to see where and how it's being called! nifty.
 
+
+#### print w/ spider monkey
+
+<blockquote class="twitter-tweet"><p>hey now, @<a href="https://twitter.com/fat">fat</a>. I may be old, but I don't debug with alert(). I use print() in the SpiderMonkey shell.</p>&mdash; Rob Sayre (@sayrer) <a href="https://twitter.com/sayrer/status/150312712004579328" data-datetime="2011-12-23T20:31:57+00:00">December 23, 2011</a></blockquote>
+
+I can't believe Rob really does this, but:
+
+>The JavaScript shell is a command-line program included in the SpiderMonkey source distribution. It is the JavaScript equivalent of Python's interactive prompt, the Lisp read-eval-print loop, or Ruby's irb.
+
+This is not to be confused with the browsers `print()` (which would only be useful if you were trying to debug on paper :P ).
 
 #### Other tools?
 
