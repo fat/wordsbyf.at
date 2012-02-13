@@ -1,6 +1,6 @@
 ---
 title: Creating Issues
-date: 12/02/2012
+date: 13/02/2012
 
 I wanted to take a moment to talk about issues, spefically Github issues. I feel like over the last few months through my involvement in the open source community I've seen **tons** of interesting approaches to github issues and thought it might be valuable to let you know in my eyes what works well and what works less well.
 
