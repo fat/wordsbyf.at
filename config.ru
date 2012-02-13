@@ -32,5 +32,3 @@ toto = Toto::Server.new do
 end
 
 run toto
-
-
