@@ -138,8 +138,8 @@ p{margin-bottom:22px;}
 html,body{height:100%;}
 /* Primary content container  */
 .masthead{margin:60px 0 40px;}
-.masthead h1 a{font-family:"alphabet";font-size:70px;font-weight:100;color:#e3e3e3;}
-.masthead h1 a:hover{color:#ddd;text-decoration:none;}
+.masthead h1 a{font-family:"alphabet";font-size:70px;font-weight:100;color:#000;}
+.masthead h1 a:hover{color:#444;text-decoration:none;}
 /* Button style */
 .button{display:inline-block;padding:0 34px;margin-bottom:20px;font-size:15px;font-weight:bold;line-height:46px;color:#FFF;text-decoration:none;text-transform:uppercase;cursor:pointer;background:#de3b16;border-radius:3px;-webkit-transition:background-color 0.3s ease-in-out;   -moz-transition:background-color 0.3s ease-in-out;        transition:background-color 0.3s ease-in-out;}
 .button:hover{color:#fff;background:#ff3600;}

@@ -670,11 +670,11 @@ html, body {
   font-family: "alphabet";
   font-size: 70px;
   font-weight: 100;
-  color: #e3e3e3;
+  color: #000;
 }
 
 .masthead h1 a:hover {
-  color: #ddd;
+  color: #444;
   text-decoration: none;
 }
 
