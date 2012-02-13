@@ -2,9 +2,9 @@
 title: Creating Issues
 date: 13/02/2012
 
-I wanted to take a moment to talk about issues, spefically Github issues. I feel like over the last few months through my involvement in the open source community I've seen **tons** of interesting approaches to github issues and thought it might be valuable to let you know in my eyes what works well and what works less well.
+I wanted to take a moment to talk about issues, specifically Github issues. I feel like over the last few months through my involvement in the open source community I've seen **tons** of interesting approaches to Github issues and thought it might be valuable to let you know in my eyes what works well and what works less well.
 
-To begin, I think there are three types of issues (atleast three which i see most frequently). These include: bugs, feature requests, and "can you help me, i'm stuck". While generally I try to help the people who are simply just stuck, i'm not going to spend too much time on that now. However, the best place for that sort of help is generally going to be in mailing lists, irc, or twitter.
+To begin, I think there are three types of issues (at least three which i see most frequently). These include: bugs, feature requests, and "can you help me, I’m stuck". While generally I try to help the people who are simply just stuck, I'm not going to spend too much time on that now. However, the best place for that sort of help is generally going to be in mailing lists, IRC, or twitter.
 
 ##### Bugs
 
@@ -22,7 +22,7 @@ Opening an issue is really about making a case for your bug. You need to convinc
 
 ##### Stop pasting code!
 
-I think peoples first instict when filing an issue is to paste all the code they have which *may* be related to the problem.
+I think peoples first instinct when filing an issue is to paste all the code they have which *may* be related to the problem.
 
 This is the saddest of times for someone who is trying to debug your problem because it means they have to read through alllll of it! And engineers are lazy - you should know better.
 
@@ -38,7 +38,7 @@ Instead, in my experience the hands down *best* way to do communicate your probl
 
 If you're unfamiliar with [jsfiddle](//jsfiddle.net), it's "a playground for web developers"… (just go try it…)
 
-The great thing about using something like jsfiddle is that it forces you to reproduce your problem in a new, issolated environment. So many times I've asked "would you mind please providing a jsfiddle" - and simply in creating the fiddle, the person filing the issue has stumbled across something they themselves were doing wrong.
+The great thing about using something like jsfiddle is that it forces you to reproduce your problem in a new, isolated environment. So many times I've asked "would you mind please providing a jsfiddle" - and simply in creating the fiddle, the person filing the issue has stumbled across something they themselves were doing wrong.
 
 That said, creating a jsfiddle also makes it really easy for the person debugging the problem, as they can jump right into the experience, checkout the code, and find a solution. It's the best!
 
@@ -46,11 +46,11 @@ That said, creating a jsfiddle also makes it really easy for the person debuggin
 
 If you're feeling like a **boss** and the maintainers of the project you are opening the issue against are using unit tests (they should be!) - then you could alternatively create a failing unit test and submit it as a pull request along with your issue.
 
-This is also the best choice for issues which aren't being opened against frontend projects (as they can't be demonstrated with jsfiddle).
+This is also the best choice for issues which aren't being opened against front end projects (as they can't be demonstrated with jsfiddle).
 
 Unit tests look something like [this](https://github.com/twitter/bootstrap/blob/master/js/tests/unit/bootstrap-typeahead.js) and are fairly painless to pick up if you're unfamiliar with them.
 
-Addmitedly, this is the most time consuming way to file an issue… but will seriously make any maintainer love you forever.
+Admittedly, this is the most time consuming way to file an issue… but will seriously make any maintainer love you forever.
 
 Again, it's all about isolating and demonstrating the issue - here with the added benefit of saving the developer time in writing regression tests.
 
@@ -67,5 +67,3 @@ Not too much to say here, except again - have the conversation *before* writing 
 ##### That's it…
 
 Hopefully that was helpful to you. Did I miss something? [Let me know on twitter](https://twitter.com/intent/tweet?screen_name=fat)! and I'd be happy to add it!
-
-
