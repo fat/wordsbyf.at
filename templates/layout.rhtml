@@ -1,26 +1,29 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="shortcut icon" href="/img/fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/production.css">
     <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title><%= title == 'app' ? 'fat - words about javascript' : title %></title>
   </head>
   <body>
-    <header>
-      <h1><a href="/">FAT</a></h1>
-    </header>
-    <%= yield %>
-    <footer>
-      <div class="avatar">
-        <img src="/img/fat.jpg" alt="picture of fat"/>
+    <header class="masthead">
+      <div class="container first span14">
+        <h1><a href="/">FAT</a></h1>
       </div>
-      <p><strong>Hey!</strong> My name is jacob. I write words about javascript here.</p>
-      <p>If you're wondering, I work at twitter on the platform team and I'm the co-author of some pretty nifty open source, <a href="//ender.no.de">Ender</a> and <a href="//twitter.github.com/bootstrap">Bootstrap</a>, with my good friends <a href="//twitter.com/ded">@ded</a> and <a href="//twitter.com/mdo">@mdo</a> (respectively).</p>
-      <p>For the record, I'm not a computer scientist. Also, I'm not obese. But I will respond to <a href="//github.com/fat">fat</a>. I am hungover. And I'm probably eating pizza.</p>
+    </header>
+    <div class="container first span14">
+      <%= yield %>
+    </div>
+    <footer>
+    <div class="container first span14">
+      <p>
+      © 2012. All rights reserved.
+      </p>
+      <p><a href="https://twitter.com/fat" class="twitter-follow-button" data-show-count="false">Follow @fat</a></p>
     </footer>
     <script src="/js/highlight.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </body>
 </html>
-

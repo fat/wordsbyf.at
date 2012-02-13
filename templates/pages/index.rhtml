@@ -3,13 +3,13 @@
     <article class="post">
       <header>
         <h4><a href="<%= article.path %>"><%= article.title %></a></h4>
-        <span class="date"><%= article.date %></span>
+        <div class="date"><%= article.date %></div>
       </header>
 
       <section class="content">
         <%= article.summary %>
       </section>
-      <div class="more"><a href="<%= article.path %>">read on &raquo;</a></div>
+      <div class="more"><a href="<%= article.path %>"><b>read on</b> &raquo;</a></div>
     </article>
   <% end %>
 </section>
@@ -17,4 +17,3 @@
 <section id="archives">
   <%= archives[3..-1] %>
 </section>
-

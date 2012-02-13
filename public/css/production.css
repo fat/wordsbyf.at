@@ -1,0 +1,212 @@
+/* FAT's blog styles
+ * Bootstrap table + Skeleton V1.1
+ * Copyright 2011, Dave Gamache
+ * www.getskeleton.com
+ * Free to use under the MIT license.
+ */
+@font-face{font-family:"alphabet";src:url("/fonts/alphabet.ttf");}/* #Base 960 Grid */
+.container{position:relative;width:740px;padding:0;margin:0 auto;}
+.column,.columns{display:inline;float:left;margin-right:10px;margin-left:10px;}
+.row{margin-bottom:20px;}
+/* Nested Column Classes */
+.column.alpha,.columns.alpha{margin-left:0;}
+.column.omega,.columns.omega{margin-right:0;}
+/* Base Grid */
+.container .one.column{width:40px;}
+.container .two.columns{width:100px;}
+.container .three.columns{width:160px;}
+.container .four.columns{width:220px;}
+.container .five.columns{width:280px;}
+.container .six.columns{width:340px;}
+.container .seven.columns{width:400px;}
+.container .eight.columns{width:460px;}
+.container .nine.columns{width:520px;}
+.container .ten.columns{width:580px;}
+.container .eleven.columns{width:640px;}
+.container .twelve.columns{width:700px;}
+.container .thirteen.columns{width:760px;}
+.container .fourteen.columns{width:820px;}
+.container .fifteen.columns{width:880px;}
+.container .sixteen.columns{width:940px;}
+.container .one-third.column{width:300px;}
+.container .two-thirds.column{width:620px;}
+/* Offsets */
+.container .offset-by-one{padding-left:60px;}
+.container .offset-by-two{padding-left:120px;}
+.container .offset-by-three{padding-left:180px;}
+.container .offset-by-four{padding-left:240px;}
+.container .offset-by-five{padding-left:300px;}
+.container .offset-by-six{padding-left:360px;}
+.container .offset-by-seven{padding-left:420px;}
+.container .offset-by-eight{padding-left:480px;}
+.container .offset-by-nine{padding-left:540px;}
+.container .offset-by-ten{padding-left:600px;}
+.container .offset-by-eleven{padding-left:660px;}
+.container .offset-by-twelve{padding-left:720px;}
+.container .offset-by-thirteen{padding-left:780px;}
+.container .offset-by-fourteen{padding-left:840px;}
+.container .offset-by-fifteen{padding-left:900px;}
+/* #Tablet (Portrait)
+================================================== */
+/* Note: Design for a width of 768px */
+@media only screen and (min-width:768px) and (max-width:959px){.container{width:768px;}
+  .container .column,.container .columns{margin-right:10px;margin-left:10px;}
+  .column.alpha,.columns.alpha{margin-right:10px;margin-left:0;}
+  .column.omega,.columns.omega{margin-right:0;margin-left:10px;}
+  .container .one.column{width:28px;}
+  .container .two.columns{width:76px;}
+  .container .three.columns{width:124px;}
+  .container .four.columns{width:172px;}
+  .container .five.columns{width:220px;}
+  .container .six.columns{width:268px;}
+  .container .seven.columns{width:316px;}
+  .container .eight.columns{width:364px;}
+  .container .nine.columns{width:412px;}
+  .container .ten.columns{width:460px;}
+  .container .eleven.columns{width:508px;}
+  .container .twelve.columns{width:556px;}
+  .container .thirteen.columns{width:604px;}
+  .container .fourteen.columns{width:652px;}
+  .container .fifteen.columns{width:700px;}
+  .container .sixteen.columns{width:748px;}
+  .container .one-third.column{width:236px;}
+  .container .two-thirds.column{width:492px;}
+  .container .offset-by-one{padding-left:48px;}
+  .container .offset-by-two{padding-left:96px;}
+  .container .offset-by-three{padding-left:144px;}
+  .container .offset-by-four{padding-left:192px;}
+  .container .offset-by-five{padding-left:240px;}
+  .container .offset-by-six{padding-left:288px;}
+  .container .offset-by-seven{padding-left:336px;}
+  .container .offset-by-eight{padding-left:348px;}
+  .container .offset-by-nine{padding-left:432px;}
+  .container .offset-by-ten{padding-left:480px;}
+  .container .offset-by-eleven{padding-left:528px;}
+  .container .offset-by-twelve{padding-left:576px;}
+  .container .offset-by-thirteen{padding-left:624px;}
+  .container .offset-by-fourteen{padding-left:672px;}
+  .container .offset-by-fifteen{padding-left:720px;}}/*  #Mobile (Portrait)
+================================================== */
+/* Note: Design for a width of 320px */
+@media only screen and (max-width:767px){.container{width:300px;}
+  .columns,.column{margin:0;}
+  .container .one.column,.container .two.columns,.container .three.columns,.container .four.columns,.container .five.columns,.container .six.columns,.container .seven.columns,.container .eight.columns,.container .nine.columns,.container .ten.columns,.container .eleven.columns,.container .twelve.columns,.container .thirteen.columns,.container .fourteen.columns,.container .fifteen.columns,.container .sixteen.columns,.container .one-third.column,.container .two-thirds.column{width:300px;}
+  .container .offset-by-one,.container .offset-by-two,.container .offset-by-three,.container .offset-by-four,.container .offset-by-five,.container .offset-by-six,.container .offset-by-seven,.container .offset-by-eight,.container .offset-by-nine,.container .offset-by-ten,.container .offset-by-eleven,.container .offset-by-twelve,.container .offset-by-thirteen,.container .offset-by-fourteen,.container .offset-by-fifteen{padding-left:0;}}/* #Mobile (Landscape)
+================================================== */
+/* Note: Design for a width of 480px */
+@media only screen and (min-width:480px) and (max-width:767px){.container{width:420px;}
+  .columns,.column{margin:0;}
+  .container .one.column,.container .two.columns,.container .three.columns,.container .four.columns,.container .five.columns,.container .six.columns,.container .seven.columns,.container .eight.columns,.container .nine.columns,.container .ten.columns,.container .eleven.columns,.container .twelve.columns,.container .thirteen.columns,.container .fourteen.columns,.container .fifteen.columns,.container .sixteen.columns,.container .one-third.column,.container .two-thirds.column{width:420px;}}/* #Clearing
+================================================== */
+/* Self Clearing Goodness */
+.container:after{display:block;height:0;clear:both;content:"\0020";visibility:hidden;}
+/* Use clearfix class on parent to clear nested columns,
+    or wrap each row of columns in a <div class="row"> */
+.clearfix:before,.clearfix:after,.row:before,.row:after{display:block;width:0;height:0;overflow:hidden;content:'\0020';visibility:hidden;}
+.row:after,.clearfix:after{clear:both;}
+.row,.clearfix{zoom:1;}
+/* You can also use a <br class="clear" /> to clear columns */
+.clear{display:block;width:0;height:0;overflow:hidden;clear:both;visibility:hidden;}
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{padding:0;margin:0;font:inherit;font-size:100%;vertical-align:baseline;border:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body{line-height:1;}
+ol,ul{margin-left:25px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* #Basic Styles
+================================================== */
+body{font:14px/24px "Helvetica Neue","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#000;background:#fff;-webkit-text-size-adjust:100%;}
+a{color:#333;}
+a:hover{color:#111;}
+/* #Typography
+================================================== */
+h1,h2,h3,h4,h5,h6{font-weight:bold;}
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-weight:inherit;text-decoration:none;}
+h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{text-decoration:underline;}
+h1{margin-bottom:14px;font-size:75px;line-height:80px;}
+h2{margin-bottom:10px;font-size:35px;line-height:40px;}
+h3{margin-bottom:8px;font-size:28px;line-height:34px;}
+h4{margin-bottom:4px;font-size:21px;line-height:30px;}
+h5{font-size:17px;line-height:24px;}
+h6{font-size:14px;line-height:21px;}
+p{margin-bottom:22px;}
+/* #Main styles
+================================================== */
+html,body{height:100%;}
+/* Primary content container  */
+.masthead{margin:60px 0 40px;}
+.masthead h1 a{font-family:"alphabet";font-size:70px;font-weight:100;color:#e3e3e3;}
+.masthead h1 a:hover{color:#ddd;text-decoration:none;}
+/* Button style */
+.button{display:inline-block;padding:0 34px;margin-bottom:20px;font-size:15px;font-weight:bold;line-height:46px;color:#FFF;text-decoration:none;text-transform:uppercase;cursor:pointer;background:#de3b16;border-radius:3px;-webkit-transition:background-color 0.3s ease-in-out;   -moz-transition:background-color 0.3s ease-in-out;        transition:background-color 0.3s ease-in-out;}
+.button:hover{color:#fff;background:#ff3600;}
+.license{padding-bottom:20px;font-size:13px;color:#888;}
+pre,code{padding:5px 10px;margin-bottom:20px;overflow:auto;font-family:courier;background:#F8F8FF;border:1px solid #DDD;}
+code{white-space:nowrap;}
+strong{font-weight:bold;}
+em{font-style:italic;}
+pre code{padding:0;margin-bottom:0;white-space:pre;border:0;}
+hr{margin:50px 0;border:none;border-bottom:1px solid #eee;}
+li{margin:0 0 15px 0;}
+ul{margin-bottom:50px;}
+/*!
+ * Bootstrap v2.0.0
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+table{max-width:100%;border-collapse:collapse;border-spacing:0;}
+.table{width:100%;margin-bottom:18px;}
+.table th,.table td{padding:8px;text-align:left;border-top:1px solid #ddd;}
+.table th{font-weight:bold;vertical-align:bottom;}
+.table td{vertical-align:top;}
+.table thead:first-child tr th,.table thead:first-child tr td{border-top:0;}
+.table tbody+tbody{border-top:2px solid #ddd;}
+.table-condensed th,.table-condensed td{padding:4px 5px;}
+.table-bordered{border:1px solid #ddd;border-collapse:separate;*border-collapse:collapsed;-webkit-border-radius:4px;   -moz-border-radius:4px;        border-radius:4px;}
+.table-bordered th+th,.table-bordered td+td,.table-bordered th+td,.table-bordered td+th{border-left:1px solid #ddd;}
+.table code{white-space:normal;}
+.table-bordered thead:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child td{border-top:0;}
+.table-bordered thead:first-child tr:first-child th:first-child,.table-bordered tbody:first-child tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;   -moz-border-radius:4px 0 0 0;        border-radius:4px 0 0 0;}
+.table-bordered thead:first-child tr:first-child th:last-child,.table-bordered tbody:first-child tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;   -moz-border-radius:0 4px 0 0;        border-radius:0 4px 0 0;}
+.table-bordered thead:last-child tr:last-child th:first-child,.table-bordered tbody:last-child tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;   -moz-border-radius:0 0 0 4px;        border-radius:0 0 0 4px;}
+.table-bordered thead:last-child tr:last-child th:last-child,.table-bordered tbody:last-child tr:last-child td:last-child{-webkit-border-radius:0 0 4px 0;   -moz-border-radius:0 0 4px 0;        border-radius:0 0 4px 0;}
+.table-striped tbody tr:nth-child(odd) td,.table-striped tbody tr:nth-child(odd) th{background-color:#f9f9f9;}
+table .span1{float:none;width:44px;margin-left:0;}
+table .span2{float:none;width:124px;margin-left:0;}
+table .span3{float:none;width:204px;margin-left:0;}
+table .span4{float:none;width:284px;margin-left:0;}
+table .span5{float:none;width:364px;margin-left:0;}
+table .span6{float:none;width:444px;margin-left:0;}
+table .span7{float:none;width:524px;margin-left:0;}
+table .span8{float:none;width:604px;margin-left:0;}
+table .span9{float:none;width:684px;margin-left:0;}
+table .span10{float:none;width:764px;margin-left:0;}
+table .span11{float:none;width:844px;margin-left:0;}
+table .span12{float:none;width:924px;margin-left:0;}
+/* BLOG STYLES */
+.content h5{padding-top:50px;margin-top:50px;margin-bottom:22px;border-top:1px solid #eee;}
+.date{margin-bottom:22px;color:#bbb;}
+.post{padding-bottom:50px;margin-bottom:50px;border-bottom:1px solid #ddd;}
+.more a{font-style:italic;text-decoration:none;}
+.more a b{text-decoration:underline;}
+.border-img img{display:block;margin:0 auto 22px;border:1px solid #bbb;}
+blockquote{padding-left:22px;margin-left:22px;border-left:4px solid #eee;}
+#archives ul{margin:20px 0;list-style:none;}
+#archives{padding-bottom:30px;margin-bottom:50px;border-bottom:1px solid #ddd;}
+footer div{font-size:12px;text-align:center;}
+footer iframe{width:87px!important;}
+footer{padding-bottom:30px;}
+@media only screen and (max-width:767px){.border-img img{width:100%;}}/* highlighter */
+.comment{color:#998;}
+.string{color:#D14;}
+.number{color:#0086B3;}
+.keyword{font-weight:bold;}
+.special{color:#0086B3;}
+.comment .keyword{font-weight:normal;}

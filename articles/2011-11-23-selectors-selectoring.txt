@@ -8,9 +8,7 @@ They use it every day. They know it returns whichever css rule they have specifi
 
 This article is my attempt at explaining what is going on at a high-level. The code samples below are largely simplified from the actual jQuery/Sizzle source. If you find any inaccuracies or a point you would like further clarified, please let me know on [twitter](https://twitter.com/intent/tweet?screen_name=fat)! Thanks!
 
----
-
-#### the $
+##### the $
 
 If you do a little digging in jQuery's core, you'll quickly see the following comment:
 
@@ -18,7 +16,7 @@ If you do a little digging in jQuery's core, you'll quickly see the following co
 
 What this means is that when you make a call to `$` you're really just creating a new instance of the `jQuery.fn.init` constructor. This constructor does unique things depending on it's input: checking for DOMElements, a 'body' selector, HTML strings, general selector expressions, functions, and just about everything else you can imagine.
 
-#### Selector Expressions
+##### Selector Expressions
 
 When you pass a `string` specifically into the `$` method it first filters to make sure that the input is not an HTML string. Is does this in two ways.
 
@@ -36,9 +34,7 @@ Our `'a.fat'` expression correctly fails to satisfy both HTML tests above, which
 
 With a little digging you'll see that `find` is defined simply as: `jQuery.find = Sizzle`
 
----
-
-#### Sizzle
+##### Sizzle
 
 You may or may not have heard of [Sizzle](//sizzlejs.com/), but in the project's README they've described it as:
 
@@ -48,9 +44,7 @@ Like a few other engines ([qwery](//github.com/ded/qwery), [nwmatcher](//github.
 
 At it's core Sizzle exposes a rather straight forward api, but depending on your browser's capabilities, the `window.Sizzle` method will get defined in one of two ways.
 
----
-
-#### Modern
+##### Modern
 
 Browsers which define `document.querySelectorAll` will get the "modern" Sizzle method (except for Safari when in quirks mode, which though it defines a `querySelectorAll`, can't handle uppercase or unicode characters).
 
@@ -93,9 +87,7 @@ Also notice that the `querySelectorAll` above is wrapped in a try catch because 
 
 Finally, if an error *does* occur in `querySelectorAll`, the modern matcher will fall back to it's "legacy" definition before giving up all together and returning no results.
 
----
-
-#### Element-rooted queries
+##### Element-rooted queries
 
 Before getting into the legacy matcher, I wanted to mention "Element-rooted queries".
 
@@ -116,9 +108,7 @@ What this means is that every time you're using an element-rooted query in moder
 
 As you can see - this is sorta a bummer as all of our simple selector optimizations are lost :/ That said, it still largely performs better to search from a root in modern browsers - [try it!](//jsperf.com/element-rooted-queries)
 
----
-
-#### Legacy
+##### Legacy
 
 The legacy matcher is the main matching method for all queries. If there is any problems with the modern one, or if you're searching on xml or even trying to filter against an array of nodes (as in `Sizzle.matches`), the Legacy matcher will always be used.
 
@@ -130,9 +120,7 @@ As you might expect the legacy definition accepts the same arguments as it's mod
 - filters the matched elements by the supplied expression
 - converts the results to a properly sorted array
 
----
-
-#### Chunking
+##### Chunking
 
 Sizzle begins the query process by "chunking" the provided selector with the following gnarly RegExp:
 
@@ -151,9 +139,7 @@ The `posProcess` method essentially removes all position pseudos (including <cod
 This means that doing <code>$( $('a.fat')[0] )</code> is actually considerably faster than <code>$('a.fat:first')</code> - <a href="//jsperf.com/first-vs-0">try it for yourself</a>.
 </div>
 
----
-
-#### Find
+##### Find
 
 In many ways `find` is the core of the the legacy matcher, as it single handedly is responsible for actually extracting the element nodes from the dom.
 
@@ -173,7 +159,7 @@ In fact, here the legacy method actually tries to help you out by also detecting
 
 Here's a more detailed look at the various find types and how they work:
 
-<table class="zebra-striped">
+<table class="table table-striped table-bordered">
     <thead>
      <tr>
        <th style="width: 100px;">find type</th>
@@ -208,15 +194,13 @@ The last find method is uses <code>getElementsByTagName</code> to return tag mat
     </tbody>
 </table>
 
----
-
-#### Filter
+##### Filter
 
 After `find` finishes selecting all relevant elements from the dom, the `filter` method loops through the chunked expression and tests for the occurrence of each filter's type: `PSEUDO`, `CHILD`, `ID`, `TAG`, `CLASS`, `ATTR`, and `POS`.
 
 If a "filter type" is present in a given selector expression, the `filter` method passes the node collection provided by `find` through to the matched type's `preFilter` method:
 
-<table class="zebra-striped">
+<table class="table table-striped table-bordered">
     <thead>
      <tr>
        <th style="width: 100px;">preFilter type</th>
@@ -259,7 +243,7 @@ If a "filter type" is present in a given selector expression, the `filter` metho
 
 After going through the preFilters, the `filter` method continues forward and applies the actual filter method for a given filter type and returns the result:
 
-<table class="zebra-striped">
+<table class="table table-striped table-bordered">
     <thead>
      <tr>
        <th style="width: 100px;">filter type</th>
@@ -300,9 +284,7 @@ After going through the preFilters, the `filter` method continues forward and ap
     </tbody>
 </table>
 
----
-
-#### makeArray
+##### makeArray
 
 After `find` and `filter` have finished retrieving elements, Sizzle pushes everything to an array along with the optional `results` argument and does some simple pruning to clean up the result before returning it back to you.
 
@@ -310,9 +292,7 @@ After `find` and `filter` have finished retrieving elements, Sizzle pushes every
 <span class="label notice">Note</span> Sizzle performs a small check to determine if the browser is capable of converting a nodelist to an array using built in methods and if the returned array holds DOM nodes. If not, it creates a new method called <code>makeArray</code> to handle that special for us.
 </div>
 
----
-
-#### in summary
+##### in summary
 
 So what happens when you write `$('a.fat')`? Hopefully it's pretty clear by now -- but this is what is happening:
 
@@ -326,8 +306,6 @@ Because of this, if you are optimizing for legacy browsers it is highly desirabl
 
 <a href="//jsperf.com/overqualify-class">Try it yourself in IE 6 and Chrome!</a>
 
----
-
-#### that's it
+##### that's it
 
 If you disagree with anything in this article, need more clarification on something, or you just want to say hey - hit me up on [twitter](https://twitter.com/intent/tweet?screen_name=fat)!

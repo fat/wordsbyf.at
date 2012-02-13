@@ -7,7 +7,7 @@ As it turns out, there are tons of different ways to debug javascript. Consideri
 
 If you think of any additional techniques or would like more clarification, [please let me know](https://twitter.com/intent/tweet?screen_name=fat)!
 
-#### alerts
+##### Alerts
 
 Every engineer who has written javascript for browsers has probably used an alert to debug.
 
@@ -20,24 +20,24 @@ That said, they have definitely saved me a number of times (alerts and [old engi
     alert(arguments.callee.toString()) // this is tragic. I know. ;_;
 
 
-#### breakpoints
+##### Breakpoints
+
+Breakpoints are an indispensable part of my day to day debugging routine. The first time I encountered a breakpoint I'm pretty sure [I soiled myself in joy](//twitter.com/#!/dhg/status/149757029936934912).
 
 <div class='border-img'>
 <img src="/img/breakpoint.png" />
 </div>
-
-Breakpoints are an indispensable part of my day to day debugging routine. The first time I encountered a breakpoint I'm pretty sure [I soiled myself in joy](//twitter.com/#!/dhg/status/149757029936934912).
 
 If you're not familiar with the concept, a breakpoint pauses the execution of a script on a particular line, allowing you to inspect variables, revisit the call stack, and step through the rest of your program.
 
 I use breakpoints when log statements begin to feel tedious or in larger projects where I'm encountering lots of abstraction. Being able to pause the execution and step through methods can be a seriously invaluable way of familiarizing yourself with any code base and if you haven't tried it - stop what you're doing and try it now. *seriously*.
 
 
-#### conditional breakpoints
+##### Conditional Breakpoints
 
 Conditional breakpoints are just like regular breakpoints, but only pause your script when an expression is true. These are great (particularly in loops) where you're only conditionally interested in something. Definitely something worth checking out if you haven't happened across them before!
 
-#### pausing on exceptions
+##### Pausing on Exceptions
 
 "Pausing on exceptions" has all the same advantages as regular breakpoints, but with the added bonus that they only occur at the point of an exception (and just before the exception is actually thrown).
 
@@ -48,31 +48,29 @@ Pausing here allows you to see what's going on right before the exception and al
 Another cool thing is that you can actually change the value of variables while paused at a breakpoint. This allows you prevent the actual error before it happens and step through your code as if the error never occurred.
 
 
-#### call stack
+##### Call Stack
+
+It took me a while to really understand the value of call stacks and how amazing it is to have access to them. From any given breakpoint, you can inspect the call stack and see the state of the variables in any of the callers.
 
 <div class='border-img'>
 <img src="/img/callstack.png" />
 </div>
-
-It took me a while to really understand the value of call stacks and how amazing it is to have access to them.
-
-From any given breakpoint, you can inspect the call stack and see the state of the variables in any of the callers.
 
 This is super valuable when the root of your problem is being caused further up the stack (think breaking on exceptions).
 
 It often offers lots of insight into the life of a variable and reasons as to why certain arguments are what they are.
 
 
-#### console.dir
+##### console.dir
 
 For some reason the `console.dir` method isn't as well known as `console.log`. That said, if i could only have one, i think i might actually have to choose `console.dir`.
 
-`console.dir` logs interactive objects directly to the console - this means that rather than coercing functions to strings (as with `console.log`), `console.dir` actually logs the function object, allowing you to inspect it's properties (boss for digging into an object's prototype property).
+The dir method logs interactive objects directly to the console - this means that rather than coercing functions to strings (as with `console.log`), `console.dir` actually logs the function object, allowing you to inspect it's properties (boss for digging into an object's prototype property).
 
     console.dir(myFunction) // log my method and it's properties
 
 
-#### console.log
+##### console.log
 
 The `console.log` method is probably the most popular debugging tool in modern JS programming. Because of this, and because of it's lack of existence in IE, it's also probably the second most common cause for your javascript not working (next to maybe trailing commas).
 
@@ -81,7 +79,7 @@ The `console.log` statement is so lethal because even if your console isn't open
 Anyways, besides totally screwing you if you forget about it, `console.log` is crazy useful. I mean... it logs things. You *should* know about it.
 
 
-#### console.trace
+##### console.trace
 
 This method outputs a stack trace string to the console. I personally don't use it very often because at this point I'm usually going to opt for a breakpoint or something similar. That said, sometimes halting the execution of your script can prevent a race condition - and in those times, the trace method can be pretty handy.
 
@@ -92,7 +90,7 @@ This method outputs a stack trace string to the console. I personally don't use 
       InjectedScript.evaluate
 
 
-#### debugger
+##### debugger
 
 The `debugger` statement stops the execution of your script, giving you all the advantages of breakpoints, but as a keyword that lives in your actual source.
 
@@ -101,7 +99,7 @@ This statement is particularly useful in larger codebases where it doesn't make 
 One disadvantage of the debugger statement however is you can't easily toggle it off (but have to manually remove it from your source) - for this reason I highly recommend you avoid putting it inside loops! ;)
 
 
-#### Getters/Setters
+##### Getters/Setters
 
 This is an interesting technique that I first saw done by [@mracus](//twitter.com/mracus), when trying to debug something in the twitter.com codebase.
 
@@ -121,9 +119,13 @@ To do that you set a custom `get` and `set` method on an object like this:
 Now anytime the `twttr.profile` variable is referenced or written to you'll have a hook to see where and how it's being called! nifty.
 
 
-#### print w/ spider monkey
+##### Print w/ Spider Monkey
 
+Almost immediately after this post, i saw this in my timeline...
+
+<p>
 <blockquote class="twitter-tweet"><p>hey now, @<a href="https://twitter.com/fat">fat</a>. I may be old, but I don't debug with alert(). I use print() in the SpiderMonkey shell.</p>&mdash; Rob Sayre (@sayrer) <a href="https://twitter.com/sayrer/status/150312712004579328" data-datetime="2011-12-23T20:31:57+00:00">December 23, 2011</a></blockquote>
+</p>
 
 I can't believe Rob really does this, but:
 
@@ -131,6 +133,6 @@ I can't believe Rob really does this, but:
 
 This is not to be confused with the browsers `print()` (which would only be useful if you were trying to debug on paper :P ).
 
-#### Other tools?
+##### Other Tools?
 
 That's it for now… Did I miss something? If you are debugging your code a different way, let me know an i'll add it to this collection! Thanks!

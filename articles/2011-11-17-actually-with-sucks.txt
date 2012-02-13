@@ -47,7 +47,7 @@ If you're not exactly sure what that would do, check out [this block of code](//
 
 This is pretty awesome because it means we no longer really need to worry about anything - we can go crazy and everything which isn't explicitly setting variables on the `window` is contained within the block. Hooray!! right?
 
-#### NOPE
+##### NOPE
 
 Unfortunately there *is* a down side… performance (the bad kind). [Kangax](//twitter.com/#!/Kangax) does a pretty good job [explaining](//stackoverflow.com/questions/61552/are-there-legitimate-uses-for-javascripts-with-statement/1463937#1463937) what a JS engine is doing when you use a `with` statement:
 
@@ -65,7 +65,7 @@ Then the very wise [@sayrer](//twitter.com/sayrer) pulled me aside and pointed o
 
 As it turns out, he was right. Adding this lib to any application which already had a substantial amount of JS was causing it to peg the CPU and ultimately crash the application. What? how? why? boo. **Infinite sadness.**
 
-#### So that sucks, but…
+##### So that sucks, but…
 
 Luckily the way [Ender](//ender.no.de) was designed, libraries are consumed as [commonjs modules](///www.commonjs.org/specs/modules/1.0/). This means that there's not really a lot of sharing of code between libs and when there is, it's done via a `require` method.
 
@@ -108,7 +108,7 @@ Super simple, right? Again, this works so well only because I happen to be worki
 So no more `with` statements... k? What do you think?
 
 <div id="angus"></div>
-#### <span class="label notice">Edit</span> This is what Angus thinks…
+##### Edit: This is what Angus thinks…
 
 Shortly after posting this article, [Angus Croll](//http://twitter.com/angustweets) scolded me on gchat for not having comments. Which i regretted, until this morning when I recieved this super insightful email on `with`!
 

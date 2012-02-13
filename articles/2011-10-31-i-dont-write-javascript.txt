@@ -27,7 +27,7 @@ For many frontend engineers, javascript is still only "javascript the good parts
 But it doesn't *need* to be. Again, you have options. (If you haven't already I highly recommend you stop what you're doing and checkout [JSHint](//jshint.com)).
 
 
-### Ok, ok... Why are there no semicolons in bootstrap?
+##### Ok, ok... Why are there no semicolons in bootstrap?
 
 So to directly answer the original question.... Technically there *are* semicolons in bootstrap.
 

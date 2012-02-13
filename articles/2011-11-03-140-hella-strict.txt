@@ -1,25 +1,25 @@
---- 
+---
 title: 1.4.0 Hella Strict
 author: Fat
 date: 03/11/2011
 
 Today [@mdo](//markdotto.com) and I released [Bootstrap version 1.4](//github.com/twitter/bootstrap), which marks the last minor release before shifting entirely towards 2.0 work. Besides a ton of bug fixes, there's actually some pretty neat new stuff - here's a high level look at some of the changes you'll find in the JS...
 
-### "use[ing] strict"
+##### "use[ing] strict"
 
-As of 1.4 we've decided to adopt ECMAScript 5's "strict" mode. As our project grows it's important to us that it's as easy to contribute to as possible - we think that means giving you the tools to detect potentially hazardous mistakes early and independently. Because strict mode is backwards compatible with older versions of ECMAscript and because it's scoped to a function, this change is harmless and mostly present as an awesome debugging tool. If you're unfamiliar with strict mode, read more about it [here](http://javascriptweblog.wordpress.com/2011/05/03/javascript-strict-mode/). 
+As of 1.4 we've decided to adopt ECMAScript 5's "strict" mode. As our project grows it's important to us that it's as easy to contribute to as possible - we think that means giving you the tools to detect potentially hazardous mistakes early and independently. Because strict mode is backwards compatible with older versions of ECMAscript and because it's scoped to a function, this change is harmless and mostly present as an awesome debugging tool. If you're unfamiliar with strict mode, read more about it [here](http://javascriptweblog.wordpress.com/2011/05/03/javascript-strict-mode/).
 
     !function () {
       'use strict'
     }()
 
-### more data-attributes
+##### more data-attributes
 
 Mark and I feel strongly that you shouldn't have to spend time writing javascript just to add interaction to Bootstrap's components. Historically we've pursued this with the use of `data-attributes` and the [pub/sub](//en.wikipedia.org/wiki/Publish/subscribe) pattern. This pattern enables the addition of interactive behavior to elements through simple markup like:
 
     <div data-dropdown="dropdown">…</ div>
 
-In 1.4 we've gotten a bit more aggressive with this -- now in addition to subscribing to a plug-in you can provide instance level options for a particular element. 
+In 1.4 we've gotten a bit more aggressive with this -- now in addition to subscribing to a plug-in you can provide instance level options for a particular element.
 
 In the past to specify the placement of an individual twipsy you needed to do something like this:
 
@@ -33,16 +33,16 @@ Today simply provide a placement attribute and value:
 
 As you might imagine, this is incredibly powerful - particularly when working with multiple twipsies powered by the live option.
 
-### Better CSS animation support
+##### Better CSS animation support
 
 As you've probably noticed, bootstrap doesn't use javascript to power any of its animations - instead we've decided to make motion a progressive enhancement similar to rounded corners and drop shadows. That said, we've had to do some non-trivial work in JS to get CSS to behave exactly the way we've wanted.
 
 In particular with this release we've finally fixed a crazy frustrating Firefox bug which had basically rendered animated modals unusable up until now. If you're not familiar with CSS transitions and interacting with them in JS, essentially this is how it works:
- 
+
   - [detect](https://gist.github.com/373874) a particular browsers transitionEnd event name
   - add a listener for this event to your element
   - add a class to said element to start the animation
-  - on animation complete, it fires the event and we continue to execute the rest of our code. 
+  - on animation complete, it fires the event and we continue to execute the rest of our code.
 
 That looks something like this:
 
