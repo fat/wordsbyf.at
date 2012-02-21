@@ -8,8 +8,8 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   articles.reverse[0...10].each do |article|
     xml.entry do
       xml.title article.title
-      xml.link "rel" => "alternate", "href" => article.path
-      xml.id article.path
+      xml.link "rel" => "alternate", "href" => "http://wordsbyf.at" + article.path
+      xml.id "http://wordsbyf.at" + article.path
       xml.published article[:date].iso8601
       xml.updated article[:date].iso8601
       xml.author { xml.name @config[:author] }
