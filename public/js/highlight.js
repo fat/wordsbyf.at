@@ -1,3 +1,6 @@
+// adapted from alexis's
+// highlight.js
+
 !function (exports) {
 
 var nodes = document.querySelectorAll('pre code')
