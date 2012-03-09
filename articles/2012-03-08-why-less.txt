@@ -29,7 +29,7 @@ We've also looked at a few of the other options (like the very cool [stylus](htt
 
 This is a really hard one that we come back to a lot (as CSS has a very special place in both of our hearts). However, for now it really comes down to customization and reuse. People seem to like to be able to manipulate variables and get totally different experiences, and we want to enable that as much as possible.
 
-Another interesting data point is that we've found our Less styles tend to gzip better than code we've written in plain CSS (we suspect because of code repetition). If you'd like to know more about this, you should definitely bug the very talented [@necolas](//twiter.com/necolas) about it on twitter!
+Another interesting data point is that we've found our Less styles tend to gzip better than code we've written in plain CSS (we suspect because of code repetition). If you'd like to know more about this, you should definitely bug the very talented [@necolas](//twitter.com/necolas) about it on twitter!
 
 
 ##### What about maintaining multiple versions?
