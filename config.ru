@@ -20,6 +20,7 @@ toto = Toto::Server.new do
   set :url, "http://wordsbyf.at"
   set :author, "fat"
   set :title, 'wordsbyf.at'
+  set :summary,     :max => 250
 end
 
 run toto

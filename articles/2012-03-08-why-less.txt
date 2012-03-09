@@ -1,0 +1,47 @@
+---
+title: Why Less?
+date: 08/03/2012
+
+Since first open sourcing bootstrap one question Mark and I have heard *a lot* is: "why Less?" If you're not familiar, [Less](http://lesscss.org) is a dynamic stylesheet language meant to extend CSS with things like variables, mixins, operations and functions.
+
+The question is a really good one and something we struggle with a lot ourselves. So much so, Mark asked me to write a little bit about some of the conversations we've had around our choice and why we've made it.
+
+Going forward, I'm going to try to use this as a faq/wiki for common questions around our decision to use Less. Feel free to ask Mark or I more about any of these questions and I'll update the post here. Thanks!
+
+
+##### Why not Sass?
+
+Sass is great. It ships with rails and has lots of cool, *super* powerful functionality. That said, we've chosen Less over Sass because:
+
++ **Bootstrap compiles ~6x faster with Less then Sass** A while back I created a simple benchmark which measured the time it took to compile [Bootstrap](https://github.com/twitter/bootstrap) (written in Less) vs. [Bootstrap-Sass](https://github.com/thomas-mcdonald/bootstrap-sass) (the most popular boostrap port). Our Less version compiled in a little under 90 ms on average, while the Sass version compiled around 540ms.
+
++ **Less is implemented in JavaScript** We write javascript everyday, not Ruby. This makes it really easy for us to dive straight into the Less source and patch something if we encounter a bug or help to push a feature forward by doing the development work ourselves and sending a pull request. This has proven to be invaluable and just isn't something possible for us in Sass.
+
++ **Less is simple** At the end of the day Mark and I want it to feel like we're writing CSS. We love the declarative nature of Less and how much thought has been put into it. While some of the same could be said about scss, Sass is just not our thing.
+
+
+##### Why not [some other language/preprocessor]?
+
+We've also looked at a few of the other options (like the very cool [stylus](https://github.com/learnboost/stylus) by our friends at [learnboost](https://github.com/learnboost)). However we found that these were either too terse or their feature set just wasn't a significant enough divergence from Less to warrant us porting all our work over and starting down a new path.
+
+
+##### Why not just plain CSS?
+
+This is a really hard one that we come back to a lot (as CSS has a very special place in both of our hearts). However, for now it really comes down to customization and reuse. People seem to like to be able to manipulate variables and get totally different experiences, and we want to enable that as much as possible.
+
+Another interesting data point is that we've found our Less styles tend to gzip better than code we've written in plain CSS (we suspect because of code repetition). If you'd like to know more about this, you should definitely bug the very talented [@necolas](//twiter.com/necolas) about it on twitter!
+
+
+##### What about maintaining multiple versions?
+
+We get this question a lot as well, "Why not maintain both a Less and Sass version?" This is *really* dangerous territory as it causes us a lot of duplication of work and just isn't practical at the moment. That said, there are some really awesome ports out there, like the Sass version I mentioned above. Also, because of our amazing community, chances are if you search github you'll find a great port to the language you prefer. :)
+
+
+##### Conclusions
+
+Ultimately our use of Less is a stopgap while we wait for the future of CSS - which is looking really promising and already has great proposals for variables and mixins!
+
+For now however, we're really happy with Less - but don't think you should have to use it if it's not your thing. Search around, get involved in our mailing list, or use the precompiled CSS.
+
+thanks!
+<3 fat
