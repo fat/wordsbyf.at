@@ -13,7 +13,7 @@ Going forward, I'm going to try to use this as a faq/wiki for common questions a
 
 Sass is great. It ships with rails and has lots of cool, *super* powerful functionality. That said, we've chosen Less over Sass because:
 
-+ **Bootstrap compiles ~6x faster with Less then Sass** A while back I created a simple benchmark which measured the time it took to compile [Bootstrap](https://github.com/twitter/bootstrap) (written in Less) vs. [Bootstrap-Sass](https://github.com/thomas-mcdonald/bootstrap-sass) (the most popular boostrap port). Our Less version compiled in a little under 90 ms on average, while the Sass version compiled around 540ms.
++ **Bootstrap compiles ~6x faster with Less than Sass** A while back I created a simple benchmark which measured the time it took to compile [Bootstrap](https://github.com/twitter/bootstrap) (written in Less) vs. [Bootstrap-Sass](https://github.com/thomas-mcdonald/bootstrap-sass) (the most popular boostrap port). Our Less version compiled in a little under 90 ms on average, while the Sass version compiled around 540ms.
 
 + **Less is implemented in JavaScript** We write javascript everyday, not Ruby. This makes it really easy for us to dive straight into the Less source and patch something if we encounter a bug or help to push a feature forward by doing the development work ourselves and sending a pull request. This has proven to be invaluable and just isn't something possible for us in Sass.
 
