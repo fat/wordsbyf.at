@@ -81,7 +81,7 @@ This is great news! If you can confirm that all your code is indeed playing by t
       var api
 
       // the ender-js client lib augments it's api onto `this`
-      function (context) {
+      !function (context) {
           context[api] = api
       }(this)
 
