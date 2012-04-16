@@ -21,6 +21,10 @@ toto = Toto::Server.new do
   set :author, "fat"
   set :title, 'wordsbyf.at'
   set :summary,     :max => 250
+  set :error, lambda {|code|
+        file = File.open("./public/404.html", "rb")
+        contents = file.read
+      }
 end
 
 run toto

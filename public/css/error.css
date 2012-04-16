@@ -1,0 +1,31 @@
+body { overflow: hidden; background-color: #5ebaf6; font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; color: #3f3f3f; font-size:20px; }
+
+.background { background: url(../img/error/background.png); position:absolute; top:0; right:0; bottom:0; left: 0; z-index:2; opacity:.3; }
+
+.sand { background-color: #e7dfb2; position:absolute; top:70%; bottom:0; left:0; right:0; }
+.sand .pyramid { width: 0; height: 0; position: absolute; opacity:.2; border: solid transparent; }
+.sand .pyramid.a { border-left-width: 40px; border-right-width: 40px; border-bottom: 40px solid #fff; left:10%; top:-40px; }
+.sand .pyramid.b { border-left-width: 90px; border-right-width: 90px; border-bottom: 90px solid #fff; left:50%; top:-90px; }
+.sand .pyramid.c { border-left-width: 30px; border-right-width: 30px; border-bottom: 30px solid #fff; left:65%; top:-30px; }
+.sand .pyramid.d { border-left-width: 70px; border-right-width: 70px; border-bottom: 70px solid #fff; left:80%; top:-70px; }
+.sand .cactus { position:absolute; left:5%; top:-48px; opacity:.2; }
+.sand .cactus.small { height: 30px; position:absolute; left:75%; top:-30px; opacity:.2; }
+
+.cloud-container { position:absolute; top: 70%; left:0; right:0; z-index:3;}
+
+.cloud { position:relative; z-index:2; width:675px; margin: -250px auto 0; }
+.cloud .body { z-index: 3; position:absolute;}
+.cloud .leg { background: #426afd; width: 11px; height: 80px; position:absolute; top:190px; z-index:2;}
+.cloud .left.leg { left: 95px; }
+.cloud .right.leg { left: 190px; }
+.cloud .shadow { position:absolute; top: 260px; left: 30px; opacity:.8;}
+.cloud .canvasEye { position:absolute; z-index: 4; }
+.cloud .left.canvasEye { top: 80px; left: 89px; }
+.cloud .right.canvasEye { top: 80px; left: 161px; }
+.cloud .huh { font-size: 120px; color:#fff; position:absolute; top: -145px; left: 115px; opacity:.6;}
+
+.talk { position:absolute; margin-top: 50px; margin-left:400px; }
+.talk .bubble {  background:#fff; padding: 20px; border-radius: 8px; }
+.talk .arrow { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-right:10px solid #fff; position:absolute; left:-8px; top:15px; opacity:.6; }
+
+.pomegranate { color: #f45e7e; }
