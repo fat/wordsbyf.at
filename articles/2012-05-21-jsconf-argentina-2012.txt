@@ -1,0 +1,16 @@
+---
+title: JSConf Argentina 2012
+date: 21/05/2012
+
+
+Last weekend was [JSConf Argentina](//jsconf.com.ar)! Thanks to [@maxogden](https://twitter.com/maxogden) and [@izs](https://twitter.com/izs), this was probably the most cat-centric conference I've ever been to (which I'm super grateful for... so many lulz). Besides cats, I also got to meet a ton of incredible local javascript nerds and was super inspired by all the amazing work they were doing.
+
+This JSConf also gave me the opportunity to speak with a bunch of Argentinians about one of my favorite authors of all time: Jorge Luis Borges! It was easily one of the most intimidating things I've ever done, as I found out almost everyone from Argentina not only knew who Borges was, but definitely knew way more about him than I could ever imagine. That said, the talk seemed to go *really* well and everyone had a lot of fun with it. Still not sure if this is only because everyone here is so polite and friendly (including the cab drivers) - or if the talk actually did go well.
+
+In case you were unable to make it, I've included the slides below - if you're interested I use Borges to start a conversation around the history of accessibility and the current lack of accessible libraries in the open source world. If a video is made available i'll be sure to edit this post with an update.
+
+thanks! <3 [fat](//twitter.com/fat)
+
+ps: protip courtesy of [@rauchg](//twitter.com/rauchg) - introducing yourself as "gorda" doesn't simply mean "fat", but actually "fat girl". **lol**.
+
+<script async class="speakerdeck-embed" data-id="4fbac431e2c382001f0055d1" data-ratio="1.7777777777777777" src="//speakerdeck.com/assets/embed.js"></script>
