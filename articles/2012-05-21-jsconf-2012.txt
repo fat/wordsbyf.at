@@ -1,0 +1,13 @@
+---
+title: JSCONF 2012
+date: 21/05/2012
+
+Last April [@voodootikigod](https://twitter.com/voodootikigod) invited me out to Scottsdale, Arizona to speak at [JSConf](http://2012.jsconf.us). The whole experience was crazy amazing and if you've never gone - be sure to go next year!
+
+At any rate, if you missed my talk, I've finally found the time to post it below and it's definitely worth a watch. If for no reason other than seeing [@janl](https://twitter.com/voodootikigod) and I hug it out on stage.
+
+<div class="well">
+<iframe src="http://blip.tv/play/g_MngvP4fwI.html?p=1" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_MngvP4fwI" style="display:none"></embed>
+</div>
+
+<3 [@fat](https://twitter.com/fat)
