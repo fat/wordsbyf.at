@@ -10,4 +10,6 @@ At any rate, if you missed my talk, I've finally found the time to post it below
 <iframe src="http://blip.tv/play/g_MngvP4fwI.html?p=1" width="480" height="346" frameborder="0" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#g_MngvP4fwI" style="display:none"></embed>
 </div>
 
-<3 [@fat](https://twitter.com/fat)
+Alternatively, if you're intereseted in checking out just my slides, [click here](https://speakerdeck.com/u/fat/p/brulons-les-musees).
+
+thanks! <3 [@fat](https://twitter.com/fat)
