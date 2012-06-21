@@ -20,7 +20,7 @@ I've been thinking about trying to write this for a while and naively set asside
 
 + **translate3d is also a b***** - If you use translate3d to do your animations it's going to look really great (the animation portion). But as soon as you go to use your app (post animation), expect all kinds of crazy shit to break - particularlly weird scroll bugs. I found that in order to get scrolling to work on a 3d translated object I needed to manually toggle overflow on a parent object (or add a margin, or anything really) on transition complete, in order to force it to render correctly. This is still a little jank. If you have a better idea, please let me know!
 
-+ **Why so buggy?** - Actually, most of the time I spent working on this project was desperately trying nonsensicle hacks in an attempt to make the things which should have worked, just work. I spent so much time randomly experimenting with crazyness (adding weird properties, putting thing in delays, trying to force reflows, etc.), all in a vain attempt to trick the browser into rendering in a somewhat reasonable way. Why is this so bad? ;_;
++ **Why so buggy?** - Actually, most of the time I spent working on this project was desperately trying nonsensical hacks in an attempt to make the things which should have worked, just work. I spent so much time randomly experimenting with crazyness (adding weird properties, putting thing in delays, trying to force reflows, etc.), all in a vain attempt to trick the browser into rendering in a somewhat reasonable way. Why is this so bad? ;_;
 
 ##### Why isn't this a Bootstrap thing?
 
