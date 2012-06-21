@@ -6,7 +6,7 @@ date: 21/06/2012
 <img alt="picture of coffin" src="/img/coffin-2.jpg">
 </div>
 
-Today I'm open sourcing a project called <a href="//github.com/fat/coffin">Coffin</a>. Coffin is a facebook/path style drawer implementation for the mobile web, which is also responsive (that means it looks pretty boss on regular browsers as well). It's built to work on top of the [Skeleton](//get.skeleton.com) framework which is written my good friend [@dhg](//twitter.com/dhg) - and is therefore super lightweight and great starting point. If you're bored, you should play with a [demo](//fat.github.com/coffin) of coffin on your iphone or your favorite browser (I'm hoping chrome is your favorite browser here - because that's all I've really tested it on at this point).
+Today I'm open sourcing a project called <a href="//github.com/fat/coffin">Coffin</a>. Coffin is a facebook/path style drawer implementation for the mobile web, which is also responsive (that means it looks pretty boss on regular browsers as well). It's built to work on top of the [Skeleton](//get.skeleton.com) framework which is written by my good friend [@dhg](//twitter.com/dhg) - and is therefore super lightweight and great starting point. If you're bored, you should play with a [demo](//fat.github.com/coffin) of coffin on your iphone or your favorite browser (I'm hoping chrome is your favorite browser here - because that's all I've really tested it on at this point).
 
 If you have any issues or feedback please file an issue on [github](//github.com/fat/coffin) or let me know on [twitter](//twitter.com/fat). Thanks <3!
 
