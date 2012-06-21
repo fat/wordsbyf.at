@@ -1,0 +1,55 @@
+##### Custom Elements
+
+Consider now the Bootstrap library. Today there are about three steps that any application author seeking to implement a Bootstrap alert box will need to complete in order to render something on their page.
+
+To begin with they will need to include a Bootstrap CSS file in the head of their page:
+
+    <link type="text/css" href="css/bootstrap.css">
+
+Afterwards, they'll need to select the appropriate javascript file and using a script tag import this as well:
+
+    <script src="js/bootstrap-alert.js"></script>
+
+Finally they'll need to extract the relevant alert markup from Bootstrap's documentation and apply it to their application. This might look something like:
+
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+      <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+    </div>
+
+There are a *number* of problems with this implementation.
+
+To begin with, two http requests are needed to request the CSS and JS. Today, a few of you might be inlining at least your css at deploy time (good on you) - but even so, you're still getting a globally defined stylesheet which runs the risk of unintentially overriding and upsetting styles across your application. As you're well aware, the current CSS model is something like defining every variable on the window object in javascript - nothing is scoped and everything is vulnerable.
+
+What's more, at execution time, the bootstrap JS is unaware of the components it will later be attached to. A selection query must be ran against the dom in order to tie interactive functionality to the appropriate markup.
+
+Finally the markup itself is loosely defined and left to error. Lots of manual copying and pasting is required (which developers are historically awful at) - as well as their simply being lots, and lots of code duplication. Consider the simple markup above, where a button element is always a part of an alert. If you're page has 100 unique alerts, or 1000 unique alerts - you must pay the price for that simple button decorator.
+
+Given the web components spec, custom elements, and shadow dom, the entire user facing implementation can/will be greatly simplified to something like this:
+
+    <link rel="components" href="bootstrap.html">
+
+    <div is="x-alert">
+      <strong>Holy Guacamole!</strong> Best check yo self, you're not looking good.
+    </div>
+
+So what is going on here? And what happened to the button tag?
+
+Bootstrap.html would look something like this:
+
+    <element extends="div" name="x-alert" constructor="Alert">
+
+      <script>
+        Alert.prototype.Close = function () { … }
+        this.listen(…)
+      </script>
+
+      <template>
+        <style scoped>…</style>
+        <div>
+          <button type="button">&amp;times;</button>
+          <content></content>
+        </div>
+      </template>
+
+    </element>

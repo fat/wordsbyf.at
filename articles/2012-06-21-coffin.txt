@@ -1,0 +1,29 @@
+---
+title: Coffin
+date: 21/06/2012
+
+<div class="border-img-right">
+<img alt="picture of coffin" src="/img/coffin-2.jpg">
+</div>
+
+Today I'm open sourcing a project called <a href="//github.com/fat/coffin">Coffin</a>. Coffin is a facebook/path style drawer implementation for the mobile web, which is also responsive (that means it looks pretty boss on regular browsers as well). It's built to work on top of the [Skeleton](//get.skeleton.com) framework which is written my good friend [@dhg](//twitter.com/dhg) - and is therefore super lightweight and great starting point. If you're bored, you should play with a [demo](//fat.github.com/coffin) of coffin on your iphone or your favorite browser (I'm hoping chrome is your favorite browser here - because that's all I've really tested it on at this point).
+
+If you have any issues or feedback please file an issue on [github](//github.com/fat/coffin) or let me know on [twitter](//twitter.com/fat). Thanks <3!
+
+##### Back Story
+
+I've been thinking about trying to write this for a while and naively set asside about 20 minutes yesterday to make that happen. Somewhere between 6-7 hours later, amidst a pool of tears, it appears to be working pretty well in the latest mobile safari and chrome. Better browser support will likely come over the next few weeks. Also, if you're reading this, and you're a mobile web boss - [look at my source](//github.com/fat/coffin) and tell me all your secrets!
+
+##### Some Things I Learned
+
++ **The mobile web is not the web. It's a b****** - If you are a relatively compentent web developer, don't think that your skills will automatically transfer to mobile. I did, and that makes me a n00b. This is [a new world](http://a.dolimg.com/en-US/disneyfans/media/history/movies/aladdin/mov_aladdin_240x240.jpg) with new hacks, new tools, new sad times. The single best piece of advice I can give anyone starting a new mobile web project: spend the time to learn the tools. It's crazy how much we rely on tools today to make our lives even a little less painful. I spent a good hour using `alerts` before searching for tools... don't make that mistake.
+
++ **translate3d is also a b***** - If you use translate3d to do your animations it's going to look really great (the animation portion). But as soon as you go to use your app (post animation), expect all kinds of crazy shit to break - particularlly weird scroll bugs. I found that in order to get scrolling to work on a 3d translated object I needed to manually toggle overflow on a parent object (or add a margin, or anything really) on transition complete, in order to force it to render correctly. This is still a little jank. If you have a better idea, please let me know!
+
++ **Why so buggy?** - Actually, most of the time I spent working on this project was desperately trying nonsensicle hacks in an attempt to make the things which should have worked, just work. I spent so much time randomly experimenting with crazyness (adding weird properties, putting thing in delays, trying to force reflows, etc.), all in a vain attempt to trick the browser into rendering in a somewhat reasonable way. Why is this so bad? ;_;
+
+##### Why isn't this a Bootstrap thing?
+
+I'm sorta anticpating this question - so I thought I'd drop a quick note. This isn't a part of Bootstrap because the browser support just isn't there yet. Mark and I *do* have interest in adding this type of navigation to the docs at some point, but I wanted to play around with it in a less commital way first. If you're pationate about this sort of stuff though, [I'd love some help with it](//github.com/fat/coffin).
+
+Thanks!
